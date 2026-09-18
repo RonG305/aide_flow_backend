@@ -29,7 +29,7 @@ export type CaptureMinAggregateOutputType = {
   user_id: string | null
   kind: $Enums.CaptureKind | null
   source: string | null
-  message_id: string | null
+  conversation_id: string | null
   uri: string | null
   mime_type: string | null
   extracted_text: string | null
@@ -44,7 +44,7 @@ export type CaptureMaxAggregateOutputType = {
   user_id: string | null
   kind: $Enums.CaptureKind | null
   source: string | null
-  message_id: string | null
+  conversation_id: string | null
   uri: string | null
   mime_type: string | null
   extracted_text: string | null
@@ -59,7 +59,7 @@ export type CaptureCountAggregateOutputType = {
   user_id: number
   kind: number
   source: number
-  message_id: number
+  conversation_id: number
   uri: number
   mime_type: number
   extracted_text: number
@@ -77,7 +77,7 @@ export type CaptureMinAggregateInputType = {
   user_id?: true
   kind?: true
   source?: true
-  message_id?: true
+  conversation_id?: true
   uri?: true
   mime_type?: true
   extracted_text?: true
@@ -92,7 +92,7 @@ export type CaptureMaxAggregateInputType = {
   user_id?: true
   kind?: true
   source?: true
-  message_id?: true
+  conversation_id?: true
   uri?: true
   mime_type?: true
   extracted_text?: true
@@ -107,7 +107,7 @@ export type CaptureCountAggregateInputType = {
   user_id?: true
   kind?: true
   source?: true
-  message_id?: true
+  conversation_id?: true
   uri?: true
   mime_type?: true
   extracted_text?: true
@@ -196,7 +196,7 @@ export type CaptureGroupByOutputType = {
   user_id: string
   kind: $Enums.CaptureKind
   source: string
-  message_id: string | null
+  conversation_id: string | null
   uri: string | null
   mime_type: string | null
   extracted_text: string | null
@@ -233,7 +233,7 @@ export type CaptureWhereInput = {
   user_id?: Prisma.StringFilter<"Capture"> | string
   kind?: Prisma.EnumCaptureKindFilter<"Capture"> | $Enums.CaptureKind
   source?: Prisma.StringFilter<"Capture"> | string
-  message_id?: Prisma.StringNullableFilter<"Capture"> | string | null
+  conversation_id?: Prisma.StringNullableFilter<"Capture"> | string | null
   uri?: Prisma.StringNullableFilter<"Capture"> | string | null
   mime_type?: Prisma.StringNullableFilter<"Capture"> | string | null
   extracted_text?: Prisma.StringNullableFilter<"Capture"> | string | null
@@ -243,7 +243,7 @@ export type CaptureWhereInput = {
   created_at?: Prisma.DateTimeFilter<"Capture"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Capture"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  message?: Prisma.XOR<Prisma.MessageNullableScalarRelationFilter, Prisma.MessageWhereInput> | null
+  conversation?: Prisma.XOR<Prisma.ConversationNullableScalarRelationFilter, Prisma.ConversationWhereInput> | null
   reminders?: Prisma.ReminderListRelationFilter
   todos?: Prisma.TodoListRelationFilter
 }
@@ -253,7 +253,7 @@ export type CaptureOrderByWithRelationInput = {
   user_id?: Prisma.SortOrder
   kind?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  message_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  conversation_id?: Prisma.SortOrderInput | Prisma.SortOrder
   uri?: Prisma.SortOrderInput | Prisma.SortOrder
   mime_type?: Prisma.SortOrderInput | Prisma.SortOrder
   extracted_text?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -263,7 +263,7 @@ export type CaptureOrderByWithRelationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
-  message?: Prisma.MessageOrderByWithRelationInput
+  conversation?: Prisma.ConversationOrderByWithRelationInput
   reminders?: Prisma.ReminderOrderByRelationAggregateInput
   todos?: Prisma.TodoOrderByRelationAggregateInput
 }
@@ -276,7 +276,7 @@ export type CaptureWhereUniqueInput = Prisma.AtLeast<{
   user_id?: Prisma.StringFilter<"Capture"> | string
   kind?: Prisma.EnumCaptureKindFilter<"Capture"> | $Enums.CaptureKind
   source?: Prisma.StringFilter<"Capture"> | string
-  message_id?: Prisma.StringNullableFilter<"Capture"> | string | null
+  conversation_id?: Prisma.StringNullableFilter<"Capture"> | string | null
   uri?: Prisma.StringNullableFilter<"Capture"> | string | null
   mime_type?: Prisma.StringNullableFilter<"Capture"> | string | null
   extracted_text?: Prisma.StringNullableFilter<"Capture"> | string | null
@@ -286,7 +286,7 @@ export type CaptureWhereUniqueInput = Prisma.AtLeast<{
   created_at?: Prisma.DateTimeFilter<"Capture"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Capture"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  message?: Prisma.XOR<Prisma.MessageNullableScalarRelationFilter, Prisma.MessageWhereInput> | null
+  conversation?: Prisma.XOR<Prisma.ConversationNullableScalarRelationFilter, Prisma.ConversationWhereInput> | null
   reminders?: Prisma.ReminderListRelationFilter
   todos?: Prisma.TodoListRelationFilter
 }, "id">
@@ -296,7 +296,7 @@ export type CaptureOrderByWithAggregationInput = {
   user_id?: Prisma.SortOrder
   kind?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  message_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  conversation_id?: Prisma.SortOrderInput | Prisma.SortOrder
   uri?: Prisma.SortOrderInput | Prisma.SortOrder
   mime_type?: Prisma.SortOrderInput | Prisma.SortOrder
   extracted_text?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -318,7 +318,7 @@ export type CaptureScalarWhereWithAggregatesInput = {
   user_id?: Prisma.StringWithAggregatesFilter<"Capture"> | string
   kind?: Prisma.EnumCaptureKindWithAggregatesFilter<"Capture"> | $Enums.CaptureKind
   source?: Prisma.StringWithAggregatesFilter<"Capture"> | string
-  message_id?: Prisma.StringNullableWithAggregatesFilter<"Capture"> | string | null
+  conversation_id?: Prisma.StringNullableWithAggregatesFilter<"Capture"> | string | null
   uri?: Prisma.StringNullableWithAggregatesFilter<"Capture"> | string | null
   mime_type?: Prisma.StringNullableWithAggregatesFilter<"Capture"> | string | null
   extracted_text?: Prisma.StringNullableWithAggregatesFilter<"Capture"> | string | null
@@ -342,7 +342,7 @@ export type CaptureCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCapturesInput
-  message?: Prisma.MessageCreateNestedOneWithoutAttachmentsInput
+  conversation?: Prisma.ConversationCreateNestedOneWithoutCapturesInput
   reminders?: Prisma.ReminderCreateNestedManyWithoutCaptureInput
   todos?: Prisma.TodoCreateNestedManyWithoutCaptureInput
 }
@@ -352,7 +352,7 @@ export type CaptureUncheckedCreateInput = {
   user_id: string
   kind: $Enums.CaptureKind
   source?: string
-  message_id?: string | null
+  conversation_id?: string | null
   uri?: string | null
   mime_type?: string | null
   extracted_text?: string | null
@@ -378,7 +378,7 @@ export type CaptureUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCapturesNestedInput
-  message?: Prisma.MessageUpdateOneWithoutAttachmentsNestedInput
+  conversation?: Prisma.ConversationUpdateOneWithoutCapturesNestedInput
   reminders?: Prisma.ReminderUpdateManyWithoutCaptureNestedInput
   todos?: Prisma.TodoUpdateManyWithoutCaptureNestedInput
 }
@@ -388,7 +388,7 @@ export type CaptureUncheckedUpdateInput = {
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   kind?: Prisma.EnumCaptureKindFieldUpdateOperationsInput | $Enums.CaptureKind
   source?: Prisma.StringFieldUpdateOperationsInput | string
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   uri?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mime_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extracted_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -406,7 +406,7 @@ export type CaptureCreateManyInput = {
   user_id: string
   kind: $Enums.CaptureKind
   source?: string
-  message_id?: string | null
+  conversation_id?: string | null
   uri?: string | null
   mime_type?: string | null
   extracted_text?: string | null
@@ -436,7 +436,7 @@ export type CaptureUncheckedUpdateManyInput = {
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   kind?: Prisma.EnumCaptureKindFieldUpdateOperationsInput | $Enums.CaptureKind
   source?: Prisma.StringFieldUpdateOperationsInput | string
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   uri?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mime_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extracted_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -462,7 +462,7 @@ export type CaptureCountOrderByAggregateInput = {
   user_id?: Prisma.SortOrder
   kind?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  message_id?: Prisma.SortOrder
+  conversation_id?: Prisma.SortOrder
   uri?: Prisma.SortOrder
   mime_type?: Prisma.SortOrder
   extracted_text?: Prisma.SortOrder
@@ -478,7 +478,7 @@ export type CaptureMaxOrderByAggregateInput = {
   user_id?: Prisma.SortOrder
   kind?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  message_id?: Prisma.SortOrder
+  conversation_id?: Prisma.SortOrder
   uri?: Prisma.SortOrder
   mime_type?: Prisma.SortOrder
   extracted_text?: Prisma.SortOrder
@@ -493,7 +493,7 @@ export type CaptureMinOrderByAggregateInput = {
   user_id?: Prisma.SortOrder
   kind?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  message_id?: Prisma.SortOrder
+  conversation_id?: Prisma.SortOrder
   uri?: Prisma.SortOrder
   mime_type?: Prisma.SortOrder
   extracted_text?: Prisma.SortOrder
@@ -558,45 +558,45 @@ export type EnumCaptureStatusFieldUpdateOperationsInput = {
   set?: $Enums.CaptureStatus
 }
 
-export type CaptureCreateNestedManyWithoutMessageInput = {
-  create?: Prisma.XOR<Prisma.CaptureCreateWithoutMessageInput, Prisma.CaptureUncheckedCreateWithoutMessageInput> | Prisma.CaptureCreateWithoutMessageInput[] | Prisma.CaptureUncheckedCreateWithoutMessageInput[]
-  connectOrCreate?: Prisma.CaptureCreateOrConnectWithoutMessageInput | Prisma.CaptureCreateOrConnectWithoutMessageInput[]
-  createMany?: Prisma.CaptureCreateManyMessageInputEnvelope
+export type CaptureCreateNestedManyWithoutConversationInput = {
+  create?: Prisma.XOR<Prisma.CaptureCreateWithoutConversationInput, Prisma.CaptureUncheckedCreateWithoutConversationInput> | Prisma.CaptureCreateWithoutConversationInput[] | Prisma.CaptureUncheckedCreateWithoutConversationInput[]
+  connectOrCreate?: Prisma.CaptureCreateOrConnectWithoutConversationInput | Prisma.CaptureCreateOrConnectWithoutConversationInput[]
+  createMany?: Prisma.CaptureCreateManyConversationInputEnvelope
   connect?: Prisma.CaptureWhereUniqueInput | Prisma.CaptureWhereUniqueInput[]
 }
 
-export type CaptureUncheckedCreateNestedManyWithoutMessageInput = {
-  create?: Prisma.XOR<Prisma.CaptureCreateWithoutMessageInput, Prisma.CaptureUncheckedCreateWithoutMessageInput> | Prisma.CaptureCreateWithoutMessageInput[] | Prisma.CaptureUncheckedCreateWithoutMessageInput[]
-  connectOrCreate?: Prisma.CaptureCreateOrConnectWithoutMessageInput | Prisma.CaptureCreateOrConnectWithoutMessageInput[]
-  createMany?: Prisma.CaptureCreateManyMessageInputEnvelope
+export type CaptureUncheckedCreateNestedManyWithoutConversationInput = {
+  create?: Prisma.XOR<Prisma.CaptureCreateWithoutConversationInput, Prisma.CaptureUncheckedCreateWithoutConversationInput> | Prisma.CaptureCreateWithoutConversationInput[] | Prisma.CaptureUncheckedCreateWithoutConversationInput[]
+  connectOrCreate?: Prisma.CaptureCreateOrConnectWithoutConversationInput | Prisma.CaptureCreateOrConnectWithoutConversationInput[]
+  createMany?: Prisma.CaptureCreateManyConversationInputEnvelope
   connect?: Prisma.CaptureWhereUniqueInput | Prisma.CaptureWhereUniqueInput[]
 }
 
-export type CaptureUpdateManyWithoutMessageNestedInput = {
-  create?: Prisma.XOR<Prisma.CaptureCreateWithoutMessageInput, Prisma.CaptureUncheckedCreateWithoutMessageInput> | Prisma.CaptureCreateWithoutMessageInput[] | Prisma.CaptureUncheckedCreateWithoutMessageInput[]
-  connectOrCreate?: Prisma.CaptureCreateOrConnectWithoutMessageInput | Prisma.CaptureCreateOrConnectWithoutMessageInput[]
-  upsert?: Prisma.CaptureUpsertWithWhereUniqueWithoutMessageInput | Prisma.CaptureUpsertWithWhereUniqueWithoutMessageInput[]
-  createMany?: Prisma.CaptureCreateManyMessageInputEnvelope
+export type CaptureUpdateManyWithoutConversationNestedInput = {
+  create?: Prisma.XOR<Prisma.CaptureCreateWithoutConversationInput, Prisma.CaptureUncheckedCreateWithoutConversationInput> | Prisma.CaptureCreateWithoutConversationInput[] | Prisma.CaptureUncheckedCreateWithoutConversationInput[]
+  connectOrCreate?: Prisma.CaptureCreateOrConnectWithoutConversationInput | Prisma.CaptureCreateOrConnectWithoutConversationInput[]
+  upsert?: Prisma.CaptureUpsertWithWhereUniqueWithoutConversationInput | Prisma.CaptureUpsertWithWhereUniqueWithoutConversationInput[]
+  createMany?: Prisma.CaptureCreateManyConversationInputEnvelope
   set?: Prisma.CaptureWhereUniqueInput | Prisma.CaptureWhereUniqueInput[]
   disconnect?: Prisma.CaptureWhereUniqueInput | Prisma.CaptureWhereUniqueInput[]
   delete?: Prisma.CaptureWhereUniqueInput | Prisma.CaptureWhereUniqueInput[]
   connect?: Prisma.CaptureWhereUniqueInput | Prisma.CaptureWhereUniqueInput[]
-  update?: Prisma.CaptureUpdateWithWhereUniqueWithoutMessageInput | Prisma.CaptureUpdateWithWhereUniqueWithoutMessageInput[]
-  updateMany?: Prisma.CaptureUpdateManyWithWhereWithoutMessageInput | Prisma.CaptureUpdateManyWithWhereWithoutMessageInput[]
+  update?: Prisma.CaptureUpdateWithWhereUniqueWithoutConversationInput | Prisma.CaptureUpdateWithWhereUniqueWithoutConversationInput[]
+  updateMany?: Prisma.CaptureUpdateManyWithWhereWithoutConversationInput | Prisma.CaptureUpdateManyWithWhereWithoutConversationInput[]
   deleteMany?: Prisma.CaptureScalarWhereInput | Prisma.CaptureScalarWhereInput[]
 }
 
-export type CaptureUncheckedUpdateManyWithoutMessageNestedInput = {
-  create?: Prisma.XOR<Prisma.CaptureCreateWithoutMessageInput, Prisma.CaptureUncheckedCreateWithoutMessageInput> | Prisma.CaptureCreateWithoutMessageInput[] | Prisma.CaptureUncheckedCreateWithoutMessageInput[]
-  connectOrCreate?: Prisma.CaptureCreateOrConnectWithoutMessageInput | Prisma.CaptureCreateOrConnectWithoutMessageInput[]
-  upsert?: Prisma.CaptureUpsertWithWhereUniqueWithoutMessageInput | Prisma.CaptureUpsertWithWhereUniqueWithoutMessageInput[]
-  createMany?: Prisma.CaptureCreateManyMessageInputEnvelope
+export type CaptureUncheckedUpdateManyWithoutConversationNestedInput = {
+  create?: Prisma.XOR<Prisma.CaptureCreateWithoutConversationInput, Prisma.CaptureUncheckedCreateWithoutConversationInput> | Prisma.CaptureCreateWithoutConversationInput[] | Prisma.CaptureUncheckedCreateWithoutConversationInput[]
+  connectOrCreate?: Prisma.CaptureCreateOrConnectWithoutConversationInput | Prisma.CaptureCreateOrConnectWithoutConversationInput[]
+  upsert?: Prisma.CaptureUpsertWithWhereUniqueWithoutConversationInput | Prisma.CaptureUpsertWithWhereUniqueWithoutConversationInput[]
+  createMany?: Prisma.CaptureCreateManyConversationInputEnvelope
   set?: Prisma.CaptureWhereUniqueInput | Prisma.CaptureWhereUniqueInput[]
   disconnect?: Prisma.CaptureWhereUniqueInput | Prisma.CaptureWhereUniqueInput[]
   delete?: Prisma.CaptureWhereUniqueInput | Prisma.CaptureWhereUniqueInput[]
   connect?: Prisma.CaptureWhereUniqueInput | Prisma.CaptureWhereUniqueInput[]
-  update?: Prisma.CaptureUpdateWithWhereUniqueWithoutMessageInput | Prisma.CaptureUpdateWithWhereUniqueWithoutMessageInput[]
-  updateMany?: Prisma.CaptureUpdateManyWithWhereWithoutMessageInput | Prisma.CaptureUpdateManyWithWhereWithoutMessageInput[]
+  update?: Prisma.CaptureUpdateWithWhereUniqueWithoutConversationInput | Prisma.CaptureUpdateWithWhereUniqueWithoutConversationInput[]
+  updateMany?: Prisma.CaptureUpdateManyWithWhereWithoutConversationInput | Prisma.CaptureUpdateManyWithWhereWithoutConversationInput[]
   deleteMany?: Prisma.CaptureScalarWhereInput | Prisma.CaptureScalarWhereInput[]
 }
 
@@ -644,7 +644,7 @@ export type CaptureCreateWithoutUserInput = {
   error?: string | null
   created_at?: Date | string
   updated_at?: Date | string
-  message?: Prisma.MessageCreateNestedOneWithoutAttachmentsInput
+  conversation?: Prisma.ConversationCreateNestedOneWithoutCapturesInput
   reminders?: Prisma.ReminderCreateNestedManyWithoutCaptureInput
   todos?: Prisma.TodoCreateNestedManyWithoutCaptureInput
 }
@@ -653,7 +653,7 @@ export type CaptureUncheckedCreateWithoutUserInput = {
   id?: string
   kind: $Enums.CaptureKind
   source?: string
-  message_id?: string | null
+  conversation_id?: string | null
   uri?: string | null
   mime_type?: string | null
   extracted_text?: string | null
@@ -700,7 +700,7 @@ export type CaptureScalarWhereInput = {
   user_id?: Prisma.StringFilter<"Capture"> | string
   kind?: Prisma.EnumCaptureKindFilter<"Capture"> | $Enums.CaptureKind
   source?: Prisma.StringFilter<"Capture"> | string
-  message_id?: Prisma.StringNullableFilter<"Capture"> | string | null
+  conversation_id?: Prisma.StringNullableFilter<"Capture"> | string | null
   uri?: Prisma.StringNullableFilter<"Capture"> | string | null
   mime_type?: Prisma.StringNullableFilter<"Capture"> | string | null
   extracted_text?: Prisma.StringNullableFilter<"Capture"> | string | null
@@ -711,7 +711,7 @@ export type CaptureScalarWhereInput = {
   updated_at?: Prisma.DateTimeFilter<"Capture"> | Date | string
 }
 
-export type CaptureCreateWithoutMessageInput = {
+export type CaptureCreateWithoutConversationInput = {
   id?: string
   kind: $Enums.CaptureKind
   source?: string
@@ -728,7 +728,7 @@ export type CaptureCreateWithoutMessageInput = {
   todos?: Prisma.TodoCreateNestedManyWithoutCaptureInput
 }
 
-export type CaptureUncheckedCreateWithoutMessageInput = {
+export type CaptureUncheckedCreateWithoutConversationInput = {
   id?: string
   user_id: string
   kind: $Enums.CaptureKind
@@ -745,30 +745,30 @@ export type CaptureUncheckedCreateWithoutMessageInput = {
   todos?: Prisma.TodoUncheckedCreateNestedManyWithoutCaptureInput
 }
 
-export type CaptureCreateOrConnectWithoutMessageInput = {
+export type CaptureCreateOrConnectWithoutConversationInput = {
   where: Prisma.CaptureWhereUniqueInput
-  create: Prisma.XOR<Prisma.CaptureCreateWithoutMessageInput, Prisma.CaptureUncheckedCreateWithoutMessageInput>
+  create: Prisma.XOR<Prisma.CaptureCreateWithoutConversationInput, Prisma.CaptureUncheckedCreateWithoutConversationInput>
 }
 
-export type CaptureCreateManyMessageInputEnvelope = {
-  data: Prisma.CaptureCreateManyMessageInput | Prisma.CaptureCreateManyMessageInput[]
+export type CaptureCreateManyConversationInputEnvelope = {
+  data: Prisma.CaptureCreateManyConversationInput | Prisma.CaptureCreateManyConversationInput[]
   skipDuplicates?: boolean
 }
 
-export type CaptureUpsertWithWhereUniqueWithoutMessageInput = {
+export type CaptureUpsertWithWhereUniqueWithoutConversationInput = {
   where: Prisma.CaptureWhereUniqueInput
-  update: Prisma.XOR<Prisma.CaptureUpdateWithoutMessageInput, Prisma.CaptureUncheckedUpdateWithoutMessageInput>
-  create: Prisma.XOR<Prisma.CaptureCreateWithoutMessageInput, Prisma.CaptureUncheckedCreateWithoutMessageInput>
+  update: Prisma.XOR<Prisma.CaptureUpdateWithoutConversationInput, Prisma.CaptureUncheckedUpdateWithoutConversationInput>
+  create: Prisma.XOR<Prisma.CaptureCreateWithoutConversationInput, Prisma.CaptureUncheckedCreateWithoutConversationInput>
 }
 
-export type CaptureUpdateWithWhereUniqueWithoutMessageInput = {
+export type CaptureUpdateWithWhereUniqueWithoutConversationInput = {
   where: Prisma.CaptureWhereUniqueInput
-  data: Prisma.XOR<Prisma.CaptureUpdateWithoutMessageInput, Prisma.CaptureUncheckedUpdateWithoutMessageInput>
+  data: Prisma.XOR<Prisma.CaptureUpdateWithoutConversationInput, Prisma.CaptureUncheckedUpdateWithoutConversationInput>
 }
 
-export type CaptureUpdateManyWithWhereWithoutMessageInput = {
+export type CaptureUpdateManyWithWhereWithoutConversationInput = {
   where: Prisma.CaptureScalarWhereInput
-  data: Prisma.XOR<Prisma.CaptureUpdateManyMutationInput, Prisma.CaptureUncheckedUpdateManyWithoutMessageInput>
+  data: Prisma.XOR<Prisma.CaptureUpdateManyMutationInput, Prisma.CaptureUncheckedUpdateManyWithoutConversationInput>
 }
 
 export type CaptureCreateWithoutRemindersInput = {
@@ -784,7 +784,7 @@ export type CaptureCreateWithoutRemindersInput = {
   created_at?: Date | string
   updated_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCapturesInput
-  message?: Prisma.MessageCreateNestedOneWithoutAttachmentsInput
+  conversation?: Prisma.ConversationCreateNestedOneWithoutCapturesInput
   todos?: Prisma.TodoCreateNestedManyWithoutCaptureInput
 }
 
@@ -793,7 +793,7 @@ export type CaptureUncheckedCreateWithoutRemindersInput = {
   user_id: string
   kind: $Enums.CaptureKind
   source?: string
-  message_id?: string | null
+  conversation_id?: string | null
   uri?: string | null
   mime_type?: string | null
   extracted_text?: string | null
@@ -834,7 +834,7 @@ export type CaptureUpdateWithoutRemindersInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCapturesNestedInput
-  message?: Prisma.MessageUpdateOneWithoutAttachmentsNestedInput
+  conversation?: Prisma.ConversationUpdateOneWithoutCapturesNestedInput
   todos?: Prisma.TodoUpdateManyWithoutCaptureNestedInput
 }
 
@@ -843,7 +843,7 @@ export type CaptureUncheckedUpdateWithoutRemindersInput = {
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   kind?: Prisma.EnumCaptureKindFieldUpdateOperationsInput | $Enums.CaptureKind
   source?: Prisma.StringFieldUpdateOperationsInput | string
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   uri?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mime_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extracted_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -868,7 +868,7 @@ export type CaptureCreateWithoutTodosInput = {
   created_at?: Date | string
   updated_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCapturesInput
-  message?: Prisma.MessageCreateNestedOneWithoutAttachmentsInput
+  conversation?: Prisma.ConversationCreateNestedOneWithoutCapturesInput
   reminders?: Prisma.ReminderCreateNestedManyWithoutCaptureInput
 }
 
@@ -877,7 +877,7 @@ export type CaptureUncheckedCreateWithoutTodosInput = {
   user_id: string
   kind: $Enums.CaptureKind
   source?: string
-  message_id?: string | null
+  conversation_id?: string | null
   uri?: string | null
   mime_type?: string | null
   extracted_text?: string | null
@@ -918,7 +918,7 @@ export type CaptureUpdateWithoutTodosInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCapturesNestedInput
-  message?: Prisma.MessageUpdateOneWithoutAttachmentsNestedInput
+  conversation?: Prisma.ConversationUpdateOneWithoutCapturesNestedInput
   reminders?: Prisma.ReminderUpdateManyWithoutCaptureNestedInput
 }
 
@@ -927,7 +927,7 @@ export type CaptureUncheckedUpdateWithoutTodosInput = {
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   kind?: Prisma.EnumCaptureKindFieldUpdateOperationsInput | $Enums.CaptureKind
   source?: Prisma.StringFieldUpdateOperationsInput | string
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   uri?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mime_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extracted_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -943,7 +943,7 @@ export type CaptureCreateManyUserInput = {
   id?: string
   kind: $Enums.CaptureKind
   source?: string
-  message_id?: string | null
+  conversation_id?: string | null
   uri?: string | null
   mime_type?: string | null
   extracted_text?: string | null
@@ -966,7 +966,7 @@ export type CaptureUpdateWithoutUserInput = {
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  message?: Prisma.MessageUpdateOneWithoutAttachmentsNestedInput
+  conversation?: Prisma.ConversationUpdateOneWithoutCapturesNestedInput
   reminders?: Prisma.ReminderUpdateManyWithoutCaptureNestedInput
   todos?: Prisma.TodoUpdateManyWithoutCaptureNestedInput
 }
@@ -975,7 +975,7 @@ export type CaptureUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   kind?: Prisma.EnumCaptureKindFieldUpdateOperationsInput | $Enums.CaptureKind
   source?: Prisma.StringFieldUpdateOperationsInput | string
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   uri?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mime_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extracted_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -992,7 +992,7 @@ export type CaptureUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   kind?: Prisma.EnumCaptureKindFieldUpdateOperationsInput | $Enums.CaptureKind
   source?: Prisma.StringFieldUpdateOperationsInput | string
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   uri?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mime_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extracted_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1003,7 +1003,7 @@ export type CaptureUncheckedUpdateManyWithoutUserInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type CaptureCreateManyMessageInput = {
+export type CaptureCreateManyConversationInput = {
   id?: string
   user_id: string
   kind: $Enums.CaptureKind
@@ -1018,7 +1018,7 @@ export type CaptureCreateManyMessageInput = {
   updated_at?: Date | string
 }
 
-export type CaptureUpdateWithoutMessageInput = {
+export type CaptureUpdateWithoutConversationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   kind?: Prisma.EnumCaptureKindFieldUpdateOperationsInput | $Enums.CaptureKind
   source?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1035,7 +1035,7 @@ export type CaptureUpdateWithoutMessageInput = {
   todos?: Prisma.TodoUpdateManyWithoutCaptureNestedInput
 }
 
-export type CaptureUncheckedUpdateWithoutMessageInput = {
+export type CaptureUncheckedUpdateWithoutConversationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   kind?: Prisma.EnumCaptureKindFieldUpdateOperationsInput | $Enums.CaptureKind
@@ -1052,7 +1052,7 @@ export type CaptureUncheckedUpdateWithoutMessageInput = {
   todos?: Prisma.TodoUncheckedUpdateManyWithoutCaptureNestedInput
 }
 
-export type CaptureUncheckedUpdateManyWithoutMessageInput = {
+export type CaptureUncheckedUpdateManyWithoutConversationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   kind?: Prisma.EnumCaptureKindFieldUpdateOperationsInput | $Enums.CaptureKind
@@ -1112,7 +1112,7 @@ export type CaptureSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   user_id?: boolean
   kind?: boolean
   source?: boolean
-  message_id?: boolean
+  conversation_id?: boolean
   uri?: boolean
   mime_type?: boolean
   extracted_text?: boolean
@@ -1122,7 +1122,7 @@ export type CaptureSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   created_at?: boolean
   updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Capture$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Capture$conversationArgs<ExtArgs>
   reminders?: boolean | Prisma.Capture$remindersArgs<ExtArgs>
   todos?: boolean | Prisma.Capture$todosArgs<ExtArgs>
   _count?: boolean | Prisma.CaptureCountOutputTypeDefaultArgs<ExtArgs>
@@ -1133,7 +1133,7 @@ export type CaptureSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   user_id?: boolean
   kind?: boolean
   source?: boolean
-  message_id?: boolean
+  conversation_id?: boolean
   uri?: boolean
   mime_type?: boolean
   extracted_text?: boolean
@@ -1143,7 +1143,7 @@ export type CaptureSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   created_at?: boolean
   updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Capture$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Capture$conversationArgs<ExtArgs>
 }, ExtArgs["result"]["capture"]>
 
 export type CaptureSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1151,7 +1151,7 @@ export type CaptureSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   user_id?: boolean
   kind?: boolean
   source?: boolean
-  message_id?: boolean
+  conversation_id?: boolean
   uri?: boolean
   mime_type?: boolean
   extracted_text?: boolean
@@ -1161,7 +1161,7 @@ export type CaptureSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   created_at?: boolean
   updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Capture$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Capture$conversationArgs<ExtArgs>
 }, ExtArgs["result"]["capture"]>
 
 export type CaptureSelectScalar = {
@@ -1169,7 +1169,7 @@ export type CaptureSelectScalar = {
   user_id?: boolean
   kind?: boolean
   source?: boolean
-  message_id?: boolean
+  conversation_id?: boolean
   uri?: boolean
   mime_type?: boolean
   extracted_text?: boolean
@@ -1180,28 +1180,28 @@ export type CaptureSelectScalar = {
   updated_at?: boolean
 }
 
-export type CaptureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "kind" | "source" | "message_id" | "uri" | "mime_type" | "extracted_text" | "metadata" | "status" | "error" | "created_at" | "updated_at", ExtArgs["result"]["capture"]>
+export type CaptureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "kind" | "source" | "conversation_id" | "uri" | "mime_type" | "extracted_text" | "metadata" | "status" | "error" | "created_at" | "updated_at", ExtArgs["result"]["capture"]>
 export type CaptureInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Capture$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Capture$conversationArgs<ExtArgs>
   reminders?: boolean | Prisma.Capture$remindersArgs<ExtArgs>
   todos?: boolean | Prisma.Capture$todosArgs<ExtArgs>
   _count?: boolean | Prisma.CaptureCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CaptureIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Capture$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Capture$conversationArgs<ExtArgs>
 }
 export type CaptureIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Capture$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Capture$conversationArgs<ExtArgs>
 }
 
 export type $CapturePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Capture"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
-    message: Prisma.$MessagePayload<ExtArgs> | null
+    conversation: Prisma.$ConversationPayload<ExtArgs> | null
     reminders: Prisma.$ReminderPayload<ExtArgs>[]
     todos: Prisma.$TodoPayload<ExtArgs>[]
   }
@@ -1210,7 +1210,7 @@ export type $CapturePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     user_id: string
     kind: $Enums.CaptureKind
     source: string
-    message_id: string | null
+    conversation_id: string | null
     uri: string | null
     mime_type: string | null
     extracted_text: string | null
@@ -1614,7 +1614,7 @@ readonly fields: CaptureFieldRefs;
 export interface Prisma__CaptureClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  message<T extends Prisma.Capture$messageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Capture$messageArgs<ExtArgs>>): Prisma.Prisma__MessageClient<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  conversation<T extends Prisma.Capture$conversationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Capture$conversationArgs<ExtArgs>>): Prisma.Prisma__ConversationClient<runtime.Types.Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   reminders<T extends Prisma.Capture$remindersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Capture$remindersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReminderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   todos<T extends Prisma.Capture$todosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Capture$todosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1650,7 +1650,7 @@ export interface CaptureFieldRefs {
   readonly user_id: Prisma.FieldRef<"Capture", 'String'>
   readonly kind: Prisma.FieldRef<"Capture", 'CaptureKind'>
   readonly source: Prisma.FieldRef<"Capture", 'String'>
-  readonly message_id: Prisma.FieldRef<"Capture", 'String'>
+  readonly conversation_id: Prisma.FieldRef<"Capture", 'String'>
   readonly uri: Prisma.FieldRef<"Capture", 'String'>
   readonly mime_type: Prisma.FieldRef<"Capture", 'String'>
   readonly extracted_text: Prisma.FieldRef<"Capture", 'String'>
@@ -2060,22 +2060,22 @@ export type CaptureDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Capture.message
+ * Capture.conversation
  */
-export type Capture$messageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Capture$conversationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Message
+   * Select specific fields to fetch from the Conversation
    */
-  select?: Prisma.MessageSelect<ExtArgs> | null
+  select?: Prisma.ConversationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Message
+   * Omit specific fields from the Conversation
    */
-  omit?: Prisma.MessageOmit<ExtArgs> | null
+  omit?: Prisma.ConversationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.MessageInclude<ExtArgs> | null
-  where?: Prisma.MessageWhereInput
+  include?: Prisma.ConversationInclude<ExtArgs> | null
+  where?: Prisma.ConversationWhereInput
 }
 
 /**

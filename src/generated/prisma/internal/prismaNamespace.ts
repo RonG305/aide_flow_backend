@@ -400,7 +400,6 @@ export const ModelName = {
   User: 'User',
   Capture: 'Capture',
   Conversation: 'Conversation',
-  Message: 'Message',
   Reminder: 'Reminder',
   Todo: 'Todo'
 } as const
@@ -418,7 +417,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "capture" | "conversation" | "message" | "reminder" | "todo"
+    modelProps: "user" | "capture" | "conversation" | "reminder" | "todo"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -644,80 +643,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Message: {
-      payload: Prisma.$MessagePayload<ExtArgs>
-      fields: Prisma.MessageFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.MessageFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.MessageFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
-        }
-        findFirst: {
-          args: Prisma.MessageFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.MessageFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
-        }
-        findMany: {
-          args: Prisma.MessageFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
-        }
-        create: {
-          args: Prisma.MessageCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
-        }
-        createMany: {
-          args: Prisma.MessageCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.MessageCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
-        }
-        delete: {
-          args: Prisma.MessageDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
-        }
-        update: {
-          args: Prisma.MessageUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
-        }
-        deleteMany: {
-          args: Prisma.MessageDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.MessageUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.MessageUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
-        }
-        upsert: {
-          args: Prisma.MessageUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
-        }
-        aggregate: {
-          args: Prisma.MessageAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateMessage>
-        }
-        groupBy: {
-          args: Prisma.MessageGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MessageGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.MessageCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MessageCountAggregateOutputType> | number
-        }
-      }
-    }
     Reminder: {
       payload: Prisma.$ReminderPayload<ExtArgs>
       fields: Prisma.ReminderFieldRefs
@@ -923,7 +848,7 @@ export const CaptureScalarFieldEnum = {
   user_id: 'user_id',
   kind: 'kind',
   source: 'source',
-  message_id: 'message_id',
+  conversation_id: 'conversation_id',
   uri: 'uri',
   mime_type: 'mime_type',
   extracted_text: 'extracted_text',
@@ -941,26 +866,12 @@ export const ConversationScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   title: 'title',
-  started_at: 'started_at',
-  ended_at: 'ended_at',
+  messages: 'messages',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
 
 export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
-
-
-export const MessageScalarFieldEnum = {
-  id: 'id',
-  conversation_id: 'conversation_id',
-  role: 'role',
-  content: 'content',
-  spoken: 'spoken',
-  metadata: 'metadata',
-  created_at: 'created_at'
-} as const
-
-export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
 export const ReminderScalarFieldEnum = {
@@ -975,7 +886,7 @@ export const ReminderScalarFieldEnum = {
   completed_at: 'completed_at',
   cancelled_at: 'cancelled_at',
   source: 'source',
-  message_id: 'message_id',
+  conversation_id: 'conversation_id',
   capture_id: 'capture_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -996,7 +907,7 @@ export const TodoScalarFieldEnum = {
   completed_at: 'completed_at',
   cancelled_at: 'cancelled_at',
   source: 'source',
-  message_id: 'message_id',
+  conversation_id: 'conversation_id',
   capture_id: 'capture_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -1019,6 +930,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -1119,27 +1037,6 @@ export type EnumCaptureStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'CaptureStatus[]'
  */
 export type ListEnumCaptureStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CaptureStatus[]'>
-    
-
-
-/**
- * Reference to a field of type 'MessageRole'
- */
-export type EnumMessageRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MessageRole'>
-    
-
-
-/**
- * Reference to a field of type 'MessageRole[]'
- */
-export type ListEnumMessageRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MessageRole[]'>
-    
-
-
-/**
- * Reference to a field of type 'Boolean'
- */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -1366,7 +1263,6 @@ export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   capture?: Prisma.CaptureOmit
   conversation?: Prisma.ConversationOmit
-  message?: Prisma.MessageOmit
   reminder?: Prisma.ReminderOmit
   todo?: Prisma.TodoOmit
 }

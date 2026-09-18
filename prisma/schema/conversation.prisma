@@ -1,36 +1,14 @@
 model Conversation {
-  id         String        @id @default(cuid())
+  id         String     @id @default(cuid())
   user_id    String
-  user       User          @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user       User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
   title      String?
-  started_at DateTime      @default(now())
-  ended_at   DateTime?
-  messages   Message[]
-  created_at DateTime      @default(now())
-  updated_at DateTime      @updatedAt
+  messages   Json       @default("[]")
+  reminders  Reminder[]
+  todos      Todo[]
+  captures   Capture[]
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
 
-  @@index([user_id, started_at])
-}
-
-model Message {
-  id              String        @id @default(cuid())
-  conversation_id String
-  conversation    Conversation  @relation(fields: [conversation_id], references: [id], onDelete: Cascade)
-  role            MessageRole
-  content         String?
-  spoken          Boolean       @default(false)
-  metadata        Json?
-  attachments     Capture[]
-  reminders       Reminder[]
-  todos           Todo[]
-  created_at      DateTime      @default(now())
-
-  @@index([conversation_id, created_at])
-}
-
-enum MessageRole {
-  user
-  assistant
-  system
-  tool
+  @@index([user_id, created_at])
 }

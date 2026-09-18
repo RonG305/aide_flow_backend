@@ -54,7 +54,6 @@ export const ModelName = {
   User: 'User',
   Capture: 'Capture',
   Conversation: 'Conversation',
-  Message: 'Message',
   Reminder: 'Reminder',
   Todo: 'Todo'
 } as const
@@ -93,7 +92,7 @@ export const CaptureScalarFieldEnum = {
   user_id: 'user_id',
   kind: 'kind',
   source: 'source',
-  message_id: 'message_id',
+  conversation_id: 'conversation_id',
   uri: 'uri',
   mime_type: 'mime_type',
   extracted_text: 'extracted_text',
@@ -111,26 +110,12 @@ export const ConversationScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   title: 'title',
-  started_at: 'started_at',
-  ended_at: 'ended_at',
+  messages: 'messages',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
 
 export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
-
-
-export const MessageScalarFieldEnum = {
-  id: 'id',
-  conversation_id: 'conversation_id',
-  role: 'role',
-  content: 'content',
-  spoken: 'spoken',
-  metadata: 'metadata',
-  created_at: 'created_at'
-} as const
-
-export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
 export const ReminderScalarFieldEnum = {
@@ -145,7 +130,7 @@ export const ReminderScalarFieldEnum = {
   completed_at: 'completed_at',
   cancelled_at: 'cancelled_at',
   source: 'source',
-  message_id: 'message_id',
+  conversation_id: 'conversation_id',
   capture_id: 'capture_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -166,7 +151,7 @@ export const TodoScalarFieldEnum = {
   completed_at: 'completed_at',
   cancelled_at: 'cancelled_at',
   source: 'source',
-  message_id: 'message_id',
+  conversation_id: 'conversation_id',
   capture_id: 'capture_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -189,6 +174,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {

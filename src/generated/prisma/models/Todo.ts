@@ -35,7 +35,7 @@ export type TodoMinAggregateOutputType = {
   completed_at: Date | null
   cancelled_at: Date | null
   source: $Enums.ActorSource | null
-  message_id: string | null
+  conversation_id: string | null
   capture_id: string | null
   created_at: Date | null
   updated_at: Date | null
@@ -52,7 +52,7 @@ export type TodoMaxAggregateOutputType = {
   completed_at: Date | null
   cancelled_at: Date | null
   source: $Enums.ActorSource | null
-  message_id: string | null
+  conversation_id: string | null
   capture_id: string | null
   created_at: Date | null
   updated_at: Date | null
@@ -70,7 +70,7 @@ export type TodoCountAggregateOutputType = {
   completed_at: number
   cancelled_at: number
   source: number
-  message_id: number
+  conversation_id: number
   capture_id: number
   created_at: number
   updated_at: number
@@ -89,7 +89,7 @@ export type TodoMinAggregateInputType = {
   completed_at?: true
   cancelled_at?: true
   source?: true
-  message_id?: true
+  conversation_id?: true
   capture_id?: true
   created_at?: true
   updated_at?: true
@@ -106,7 +106,7 @@ export type TodoMaxAggregateInputType = {
   completed_at?: true
   cancelled_at?: true
   source?: true
-  message_id?: true
+  conversation_id?: true
   capture_id?: true
   created_at?: true
   updated_at?: true
@@ -124,7 +124,7 @@ export type TodoCountAggregateInputType = {
   completed_at?: true
   cancelled_at?: true
   source?: true
-  message_id?: true
+  conversation_id?: true
   capture_id?: true
   created_at?: true
   updated_at?: true
@@ -215,7 +215,7 @@ export type TodoGroupByOutputType = {
   completed_at: Date | null
   cancelled_at: Date | null
   source: $Enums.ActorSource
-  message_id: string | null
+  conversation_id: string | null
   capture_id: string | null
   created_at: Date
   updated_at: Date
@@ -254,12 +254,12 @@ export type TodoWhereInput = {
   completed_at?: Prisma.DateTimeNullableFilter<"Todo"> | Date | string | null
   cancelled_at?: Prisma.DateTimeNullableFilter<"Todo"> | Date | string | null
   source?: Prisma.EnumActorSourceFilter<"Todo"> | $Enums.ActorSource
-  message_id?: Prisma.StringNullableFilter<"Todo"> | string | null
+  conversation_id?: Prisma.StringNullableFilter<"Todo"> | string | null
   capture_id?: Prisma.StringNullableFilter<"Todo"> | string | null
   created_at?: Prisma.DateTimeFilter<"Todo"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Todo"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  message?: Prisma.XOR<Prisma.MessageNullableScalarRelationFilter, Prisma.MessageWhereInput> | null
+  conversation?: Prisma.XOR<Prisma.ConversationNullableScalarRelationFilter, Prisma.ConversationWhereInput> | null
   capture?: Prisma.XOR<Prisma.CaptureNullableScalarRelationFilter, Prisma.CaptureWhereInput> | null
 }
 
@@ -275,12 +275,12 @@ export type TodoOrderByWithRelationInput = {
   completed_at?: Prisma.SortOrderInput | Prisma.SortOrder
   cancelled_at?: Prisma.SortOrderInput | Prisma.SortOrder
   source?: Prisma.SortOrder
-  message_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  conversation_id?: Prisma.SortOrderInput | Prisma.SortOrder
   capture_id?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
-  message?: Prisma.MessageOrderByWithRelationInput
+  conversation?: Prisma.ConversationOrderByWithRelationInput
   capture?: Prisma.CaptureOrderByWithRelationInput
 }
 
@@ -299,12 +299,12 @@ export type TodoWhereUniqueInput = Prisma.AtLeast<{
   completed_at?: Prisma.DateTimeNullableFilter<"Todo"> | Date | string | null
   cancelled_at?: Prisma.DateTimeNullableFilter<"Todo"> | Date | string | null
   source?: Prisma.EnumActorSourceFilter<"Todo"> | $Enums.ActorSource
-  message_id?: Prisma.StringNullableFilter<"Todo"> | string | null
+  conversation_id?: Prisma.StringNullableFilter<"Todo"> | string | null
   capture_id?: Prisma.StringNullableFilter<"Todo"> | string | null
   created_at?: Prisma.DateTimeFilter<"Todo"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Todo"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  message?: Prisma.XOR<Prisma.MessageNullableScalarRelationFilter, Prisma.MessageWhereInput> | null
+  conversation?: Prisma.XOR<Prisma.ConversationNullableScalarRelationFilter, Prisma.ConversationWhereInput> | null
   capture?: Prisma.XOR<Prisma.CaptureNullableScalarRelationFilter, Prisma.CaptureWhereInput> | null
 }, "id">
 
@@ -320,7 +320,7 @@ export type TodoOrderByWithAggregationInput = {
   completed_at?: Prisma.SortOrderInput | Prisma.SortOrder
   cancelled_at?: Prisma.SortOrderInput | Prisma.SortOrder
   source?: Prisma.SortOrder
-  message_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  conversation_id?: Prisma.SortOrderInput | Prisma.SortOrder
   capture_id?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -344,7 +344,7 @@ export type TodoScalarWhereWithAggregatesInput = {
   completed_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Todo"> | Date | string | null
   cancelled_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Todo"> | Date | string | null
   source?: Prisma.EnumActorSourceWithAggregatesFilter<"Todo"> | $Enums.ActorSource
-  message_id?: Prisma.StringNullableWithAggregatesFilter<"Todo"> | string | null
+  conversation_id?: Prisma.StringNullableWithAggregatesFilter<"Todo"> | string | null
   capture_id?: Prisma.StringNullableWithAggregatesFilter<"Todo"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Todo"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Todo"> | Date | string
@@ -364,7 +364,7 @@ export type TodoCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutTodosInput
-  message?: Prisma.MessageCreateNestedOneWithoutTodosInput
+  conversation?: Prisma.ConversationCreateNestedOneWithoutTodosInput
   capture?: Prisma.CaptureCreateNestedOneWithoutTodosInput
 }
 
@@ -380,7 +380,7 @@ export type TodoUncheckedCreateInput = {
   completed_at?: Date | string | null
   cancelled_at?: Date | string | null
   source?: $Enums.ActorSource
-  message_id?: string | null
+  conversation_id?: string | null
   capture_id?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -400,7 +400,7 @@ export type TodoUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutTodosNestedInput
-  message?: Prisma.MessageUpdateOneWithoutTodosNestedInput
+  conversation?: Prisma.ConversationUpdateOneWithoutTodosNestedInput
   capture?: Prisma.CaptureUpdateOneWithoutTodosNestedInput
 }
 
@@ -416,7 +416,7 @@ export type TodoUncheckedUpdateInput = {
   completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   capture_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -434,7 +434,7 @@ export type TodoCreateManyInput = {
   completed_at?: Date | string | null
   cancelled_at?: Date | string | null
   source?: $Enums.ActorSource
-  message_id?: string | null
+  conversation_id?: string | null
   capture_id?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -467,7 +467,7 @@ export type TodoUncheckedUpdateManyInput = {
   completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   capture_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -503,7 +503,7 @@ export type TodoCountOrderByAggregateInput = {
   completed_at?: Prisma.SortOrder
   cancelled_at?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  message_id?: Prisma.SortOrder
+  conversation_id?: Prisma.SortOrder
   capture_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -520,7 +520,7 @@ export type TodoMaxOrderByAggregateInput = {
   completed_at?: Prisma.SortOrder
   cancelled_at?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  message_id?: Prisma.SortOrder
+  conversation_id?: Prisma.SortOrder
   capture_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -537,7 +537,7 @@ export type TodoMinOrderByAggregateInput = {
   completed_at?: Prisma.SortOrder
   cancelled_at?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  message_id?: Prisma.SortOrder
+  conversation_id?: Prisma.SortOrder
   capture_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -627,45 +627,45 @@ export type TodoUncheckedUpdateManyWithoutCaptureNestedInput = {
   deleteMany?: Prisma.TodoScalarWhereInput | Prisma.TodoScalarWhereInput[]
 }
 
-export type TodoCreateNestedManyWithoutMessageInput = {
-  create?: Prisma.XOR<Prisma.TodoCreateWithoutMessageInput, Prisma.TodoUncheckedCreateWithoutMessageInput> | Prisma.TodoCreateWithoutMessageInput[] | Prisma.TodoUncheckedCreateWithoutMessageInput[]
-  connectOrCreate?: Prisma.TodoCreateOrConnectWithoutMessageInput | Prisma.TodoCreateOrConnectWithoutMessageInput[]
-  createMany?: Prisma.TodoCreateManyMessageInputEnvelope
+export type TodoCreateNestedManyWithoutConversationInput = {
+  create?: Prisma.XOR<Prisma.TodoCreateWithoutConversationInput, Prisma.TodoUncheckedCreateWithoutConversationInput> | Prisma.TodoCreateWithoutConversationInput[] | Prisma.TodoUncheckedCreateWithoutConversationInput[]
+  connectOrCreate?: Prisma.TodoCreateOrConnectWithoutConversationInput | Prisma.TodoCreateOrConnectWithoutConversationInput[]
+  createMany?: Prisma.TodoCreateManyConversationInputEnvelope
   connect?: Prisma.TodoWhereUniqueInput | Prisma.TodoWhereUniqueInput[]
 }
 
-export type TodoUncheckedCreateNestedManyWithoutMessageInput = {
-  create?: Prisma.XOR<Prisma.TodoCreateWithoutMessageInput, Prisma.TodoUncheckedCreateWithoutMessageInput> | Prisma.TodoCreateWithoutMessageInput[] | Prisma.TodoUncheckedCreateWithoutMessageInput[]
-  connectOrCreate?: Prisma.TodoCreateOrConnectWithoutMessageInput | Prisma.TodoCreateOrConnectWithoutMessageInput[]
-  createMany?: Prisma.TodoCreateManyMessageInputEnvelope
+export type TodoUncheckedCreateNestedManyWithoutConversationInput = {
+  create?: Prisma.XOR<Prisma.TodoCreateWithoutConversationInput, Prisma.TodoUncheckedCreateWithoutConversationInput> | Prisma.TodoCreateWithoutConversationInput[] | Prisma.TodoUncheckedCreateWithoutConversationInput[]
+  connectOrCreate?: Prisma.TodoCreateOrConnectWithoutConversationInput | Prisma.TodoCreateOrConnectWithoutConversationInput[]
+  createMany?: Prisma.TodoCreateManyConversationInputEnvelope
   connect?: Prisma.TodoWhereUniqueInput | Prisma.TodoWhereUniqueInput[]
 }
 
-export type TodoUpdateManyWithoutMessageNestedInput = {
-  create?: Prisma.XOR<Prisma.TodoCreateWithoutMessageInput, Prisma.TodoUncheckedCreateWithoutMessageInput> | Prisma.TodoCreateWithoutMessageInput[] | Prisma.TodoUncheckedCreateWithoutMessageInput[]
-  connectOrCreate?: Prisma.TodoCreateOrConnectWithoutMessageInput | Prisma.TodoCreateOrConnectWithoutMessageInput[]
-  upsert?: Prisma.TodoUpsertWithWhereUniqueWithoutMessageInput | Prisma.TodoUpsertWithWhereUniqueWithoutMessageInput[]
-  createMany?: Prisma.TodoCreateManyMessageInputEnvelope
+export type TodoUpdateManyWithoutConversationNestedInput = {
+  create?: Prisma.XOR<Prisma.TodoCreateWithoutConversationInput, Prisma.TodoUncheckedCreateWithoutConversationInput> | Prisma.TodoCreateWithoutConversationInput[] | Prisma.TodoUncheckedCreateWithoutConversationInput[]
+  connectOrCreate?: Prisma.TodoCreateOrConnectWithoutConversationInput | Prisma.TodoCreateOrConnectWithoutConversationInput[]
+  upsert?: Prisma.TodoUpsertWithWhereUniqueWithoutConversationInput | Prisma.TodoUpsertWithWhereUniqueWithoutConversationInput[]
+  createMany?: Prisma.TodoCreateManyConversationInputEnvelope
   set?: Prisma.TodoWhereUniqueInput | Prisma.TodoWhereUniqueInput[]
   disconnect?: Prisma.TodoWhereUniqueInput | Prisma.TodoWhereUniqueInput[]
   delete?: Prisma.TodoWhereUniqueInput | Prisma.TodoWhereUniqueInput[]
   connect?: Prisma.TodoWhereUniqueInput | Prisma.TodoWhereUniqueInput[]
-  update?: Prisma.TodoUpdateWithWhereUniqueWithoutMessageInput | Prisma.TodoUpdateWithWhereUniqueWithoutMessageInput[]
-  updateMany?: Prisma.TodoUpdateManyWithWhereWithoutMessageInput | Prisma.TodoUpdateManyWithWhereWithoutMessageInput[]
+  update?: Prisma.TodoUpdateWithWhereUniqueWithoutConversationInput | Prisma.TodoUpdateWithWhereUniqueWithoutConversationInput[]
+  updateMany?: Prisma.TodoUpdateManyWithWhereWithoutConversationInput | Prisma.TodoUpdateManyWithWhereWithoutConversationInput[]
   deleteMany?: Prisma.TodoScalarWhereInput | Prisma.TodoScalarWhereInput[]
 }
 
-export type TodoUncheckedUpdateManyWithoutMessageNestedInput = {
-  create?: Prisma.XOR<Prisma.TodoCreateWithoutMessageInput, Prisma.TodoUncheckedCreateWithoutMessageInput> | Prisma.TodoCreateWithoutMessageInput[] | Prisma.TodoUncheckedCreateWithoutMessageInput[]
-  connectOrCreate?: Prisma.TodoCreateOrConnectWithoutMessageInput | Prisma.TodoCreateOrConnectWithoutMessageInput[]
-  upsert?: Prisma.TodoUpsertWithWhereUniqueWithoutMessageInput | Prisma.TodoUpsertWithWhereUniqueWithoutMessageInput[]
-  createMany?: Prisma.TodoCreateManyMessageInputEnvelope
+export type TodoUncheckedUpdateManyWithoutConversationNestedInput = {
+  create?: Prisma.XOR<Prisma.TodoCreateWithoutConversationInput, Prisma.TodoUncheckedCreateWithoutConversationInput> | Prisma.TodoCreateWithoutConversationInput[] | Prisma.TodoUncheckedCreateWithoutConversationInput[]
+  connectOrCreate?: Prisma.TodoCreateOrConnectWithoutConversationInput | Prisma.TodoCreateOrConnectWithoutConversationInput[]
+  upsert?: Prisma.TodoUpsertWithWhereUniqueWithoutConversationInput | Prisma.TodoUpsertWithWhereUniqueWithoutConversationInput[]
+  createMany?: Prisma.TodoCreateManyConversationInputEnvelope
   set?: Prisma.TodoWhereUniqueInput | Prisma.TodoWhereUniqueInput[]
   disconnect?: Prisma.TodoWhereUniqueInput | Prisma.TodoWhereUniqueInput[]
   delete?: Prisma.TodoWhereUniqueInput | Prisma.TodoWhereUniqueInput[]
   connect?: Prisma.TodoWhereUniqueInput | Prisma.TodoWhereUniqueInput[]
-  update?: Prisma.TodoUpdateWithWhereUniqueWithoutMessageInput | Prisma.TodoUpdateWithWhereUniqueWithoutMessageInput[]
-  updateMany?: Prisma.TodoUpdateManyWithWhereWithoutMessageInput | Prisma.TodoUpdateManyWithWhereWithoutMessageInput[]
+  update?: Prisma.TodoUpdateWithWhereUniqueWithoutConversationInput | Prisma.TodoUpdateWithWhereUniqueWithoutConversationInput[]
+  updateMany?: Prisma.TodoUpdateManyWithWhereWithoutConversationInput | Prisma.TodoUpdateManyWithWhereWithoutConversationInput[]
   deleteMany?: Prisma.TodoScalarWhereInput | Prisma.TodoScalarWhereInput[]
 }
 
@@ -699,7 +699,7 @@ export type TodoCreateWithoutUserInput = {
   source?: $Enums.ActorSource
   created_at?: Date | string
   updated_at?: Date | string
-  message?: Prisma.MessageCreateNestedOneWithoutTodosInput
+  conversation?: Prisma.ConversationCreateNestedOneWithoutTodosInput
   capture?: Prisma.CaptureCreateNestedOneWithoutTodosInput
 }
 
@@ -714,7 +714,7 @@ export type TodoUncheckedCreateWithoutUserInput = {
   completed_at?: Date | string | null
   cancelled_at?: Date | string | null
   source?: $Enums.ActorSource
-  message_id?: string | null
+  conversation_id?: string | null
   capture_id?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -761,7 +761,7 @@ export type TodoScalarWhereInput = {
   completed_at?: Prisma.DateTimeNullableFilter<"Todo"> | Date | string | null
   cancelled_at?: Prisma.DateTimeNullableFilter<"Todo"> | Date | string | null
   source?: Prisma.EnumActorSourceFilter<"Todo"> | $Enums.ActorSource
-  message_id?: Prisma.StringNullableFilter<"Todo"> | string | null
+  conversation_id?: Prisma.StringNullableFilter<"Todo"> | string | null
   capture_id?: Prisma.StringNullableFilter<"Todo"> | string | null
   created_at?: Prisma.DateTimeFilter<"Todo"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Todo"> | Date | string
@@ -781,7 +781,7 @@ export type TodoCreateWithoutCaptureInput = {
   created_at?: Date | string
   updated_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutTodosInput
-  message?: Prisma.MessageCreateNestedOneWithoutTodosInput
+  conversation?: Prisma.ConversationCreateNestedOneWithoutTodosInput
 }
 
 export type TodoUncheckedCreateWithoutCaptureInput = {
@@ -796,7 +796,7 @@ export type TodoUncheckedCreateWithoutCaptureInput = {
   completed_at?: Date | string | null
   cancelled_at?: Date | string | null
   source?: $Enums.ActorSource
-  message_id?: string | null
+  conversation_id?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -827,7 +827,7 @@ export type TodoUpdateManyWithWhereWithoutCaptureInput = {
   data: Prisma.XOR<Prisma.TodoUpdateManyMutationInput, Prisma.TodoUncheckedUpdateManyWithoutCaptureInput>
 }
 
-export type TodoCreateWithoutMessageInput = {
+export type TodoCreateWithoutConversationInput = {
   id?: string
   title: string
   notes?: string | null
@@ -844,7 +844,7 @@ export type TodoCreateWithoutMessageInput = {
   capture?: Prisma.CaptureCreateNestedOneWithoutTodosInput
 }
 
-export type TodoUncheckedCreateWithoutMessageInput = {
+export type TodoUncheckedCreateWithoutConversationInput = {
   id?: string
   user_id: string
   title: string
@@ -861,30 +861,30 @@ export type TodoUncheckedCreateWithoutMessageInput = {
   updated_at?: Date | string
 }
 
-export type TodoCreateOrConnectWithoutMessageInput = {
+export type TodoCreateOrConnectWithoutConversationInput = {
   where: Prisma.TodoWhereUniqueInput
-  create: Prisma.XOR<Prisma.TodoCreateWithoutMessageInput, Prisma.TodoUncheckedCreateWithoutMessageInput>
+  create: Prisma.XOR<Prisma.TodoCreateWithoutConversationInput, Prisma.TodoUncheckedCreateWithoutConversationInput>
 }
 
-export type TodoCreateManyMessageInputEnvelope = {
-  data: Prisma.TodoCreateManyMessageInput | Prisma.TodoCreateManyMessageInput[]
+export type TodoCreateManyConversationInputEnvelope = {
+  data: Prisma.TodoCreateManyConversationInput | Prisma.TodoCreateManyConversationInput[]
   skipDuplicates?: boolean
 }
 
-export type TodoUpsertWithWhereUniqueWithoutMessageInput = {
+export type TodoUpsertWithWhereUniqueWithoutConversationInput = {
   where: Prisma.TodoWhereUniqueInput
-  update: Prisma.XOR<Prisma.TodoUpdateWithoutMessageInput, Prisma.TodoUncheckedUpdateWithoutMessageInput>
-  create: Prisma.XOR<Prisma.TodoCreateWithoutMessageInput, Prisma.TodoUncheckedCreateWithoutMessageInput>
+  update: Prisma.XOR<Prisma.TodoUpdateWithoutConversationInput, Prisma.TodoUncheckedUpdateWithoutConversationInput>
+  create: Prisma.XOR<Prisma.TodoCreateWithoutConversationInput, Prisma.TodoUncheckedCreateWithoutConversationInput>
 }
 
-export type TodoUpdateWithWhereUniqueWithoutMessageInput = {
+export type TodoUpdateWithWhereUniqueWithoutConversationInput = {
   where: Prisma.TodoWhereUniqueInput
-  data: Prisma.XOR<Prisma.TodoUpdateWithoutMessageInput, Prisma.TodoUncheckedUpdateWithoutMessageInput>
+  data: Prisma.XOR<Prisma.TodoUpdateWithoutConversationInput, Prisma.TodoUncheckedUpdateWithoutConversationInput>
 }
 
-export type TodoUpdateManyWithWhereWithoutMessageInput = {
+export type TodoUpdateManyWithWhereWithoutConversationInput = {
   where: Prisma.TodoScalarWhereInput
-  data: Prisma.XOR<Prisma.TodoUpdateManyMutationInput, Prisma.TodoUncheckedUpdateManyWithoutMessageInput>
+  data: Prisma.XOR<Prisma.TodoUpdateManyMutationInput, Prisma.TodoUncheckedUpdateManyWithoutConversationInput>
 }
 
 export type TodoCreateManyUserInput = {
@@ -898,7 +898,7 @@ export type TodoCreateManyUserInput = {
   completed_at?: Date | string | null
   cancelled_at?: Date | string | null
   source?: $Enums.ActorSource
-  message_id?: string | null
+  conversation_id?: string | null
   capture_id?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -917,7 +917,7 @@ export type TodoUpdateWithoutUserInput = {
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  message?: Prisma.MessageUpdateOneWithoutTodosNestedInput
+  conversation?: Prisma.ConversationUpdateOneWithoutTodosNestedInput
   capture?: Prisma.CaptureUpdateOneWithoutTodosNestedInput
 }
 
@@ -932,7 +932,7 @@ export type TodoUncheckedUpdateWithoutUserInput = {
   completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   capture_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -949,7 +949,7 @@ export type TodoUncheckedUpdateManyWithoutUserInput = {
   completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   capture_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -967,7 +967,7 @@ export type TodoCreateManyCaptureInput = {
   completed_at?: Date | string | null
   cancelled_at?: Date | string | null
   source?: $Enums.ActorSource
-  message_id?: string | null
+  conversation_id?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -986,7 +986,7 @@ export type TodoUpdateWithoutCaptureInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutTodosNestedInput
-  message?: Prisma.MessageUpdateOneWithoutTodosNestedInput
+  conversation?: Prisma.ConversationUpdateOneWithoutTodosNestedInput
 }
 
 export type TodoUncheckedUpdateWithoutCaptureInput = {
@@ -1001,7 +1001,7 @@ export type TodoUncheckedUpdateWithoutCaptureInput = {
   completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1018,12 +1018,12 @@ export type TodoUncheckedUpdateManyWithoutCaptureInput = {
   completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  message_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type TodoCreateManyMessageInput = {
+export type TodoCreateManyConversationInput = {
   id?: string
   user_id: string
   title: string
@@ -1040,7 +1040,7 @@ export type TodoCreateManyMessageInput = {
   updated_at?: Date | string
 }
 
-export type TodoUpdateWithoutMessageInput = {
+export type TodoUpdateWithoutConversationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1057,7 +1057,7 @@ export type TodoUpdateWithoutMessageInput = {
   capture?: Prisma.CaptureUpdateOneWithoutTodosNestedInput
 }
 
-export type TodoUncheckedUpdateWithoutMessageInput = {
+export type TodoUncheckedUpdateWithoutConversationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1074,7 +1074,7 @@ export type TodoUncheckedUpdateWithoutMessageInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type TodoUncheckedUpdateManyWithoutMessageInput = {
+export type TodoUncheckedUpdateManyWithoutConversationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1105,12 +1105,12 @@ export type TodoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   completed_at?: boolean
   cancelled_at?: boolean
   source?: boolean
-  message_id?: boolean
+  conversation_id?: boolean
   capture_id?: boolean
   created_at?: boolean
   updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Todo$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Todo$conversationArgs<ExtArgs>
   capture?: boolean | Prisma.Todo$captureArgs<ExtArgs>
 }, ExtArgs["result"]["todo"]>
 
@@ -1126,12 +1126,12 @@ export type TodoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   completed_at?: boolean
   cancelled_at?: boolean
   source?: boolean
-  message_id?: boolean
+  conversation_id?: boolean
   capture_id?: boolean
   created_at?: boolean
   updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Todo$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Todo$conversationArgs<ExtArgs>
   capture?: boolean | Prisma.Todo$captureArgs<ExtArgs>
 }, ExtArgs["result"]["todo"]>
 
@@ -1147,12 +1147,12 @@ export type TodoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   completed_at?: boolean
   cancelled_at?: boolean
   source?: boolean
-  message_id?: boolean
+  conversation_id?: boolean
   capture_id?: boolean
   created_at?: boolean
   updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Todo$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Todo$conversationArgs<ExtArgs>
   capture?: boolean | Prisma.Todo$captureArgs<ExtArgs>
 }, ExtArgs["result"]["todo"]>
 
@@ -1168,26 +1168,26 @@ export type TodoSelectScalar = {
   completed_at?: boolean
   cancelled_at?: boolean
   source?: boolean
-  message_id?: boolean
+  conversation_id?: boolean
   capture_id?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type TodoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "title" | "notes" | "due_date" | "priority" | "status" | "tags" | "completed_at" | "cancelled_at" | "source" | "message_id" | "capture_id" | "created_at" | "updated_at", ExtArgs["result"]["todo"]>
+export type TodoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "title" | "notes" | "due_date" | "priority" | "status" | "tags" | "completed_at" | "cancelled_at" | "source" | "conversation_id" | "capture_id" | "created_at" | "updated_at", ExtArgs["result"]["todo"]>
 export type TodoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Todo$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Todo$conversationArgs<ExtArgs>
   capture?: boolean | Prisma.Todo$captureArgs<ExtArgs>
 }
 export type TodoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Todo$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Todo$conversationArgs<ExtArgs>
   capture?: boolean | Prisma.Todo$captureArgs<ExtArgs>
 }
 export type TodoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  message?: boolean | Prisma.Todo$messageArgs<ExtArgs>
+  conversation?: boolean | Prisma.Todo$conversationArgs<ExtArgs>
   capture?: boolean | Prisma.Todo$captureArgs<ExtArgs>
 }
 
@@ -1195,7 +1195,7 @@ export type $TodoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "Todo"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
-    message: Prisma.$MessagePayload<ExtArgs> | null
+    conversation: Prisma.$ConversationPayload<ExtArgs> | null
     capture: Prisma.$CapturePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1210,7 +1210,7 @@ export type $TodoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     completed_at: Date | null
     cancelled_at: Date | null
     source: $Enums.ActorSource
-    message_id: string | null
+    conversation_id: string | null
     capture_id: string | null
     created_at: Date
     updated_at: Date
@@ -1609,7 +1609,7 @@ readonly fields: TodoFieldRefs;
 export interface Prisma__TodoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  message<T extends Prisma.Todo$messageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Todo$messageArgs<ExtArgs>>): Prisma.Prisma__MessageClient<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  conversation<T extends Prisma.Todo$conversationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Todo$conversationArgs<ExtArgs>>): Prisma.Prisma__ConversationClient<runtime.Types.Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   capture<T extends Prisma.Todo$captureArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Todo$captureArgs<ExtArgs>>): Prisma.Prisma__CaptureClient<runtime.Types.Result.GetResult<Prisma.$CapturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1651,7 +1651,7 @@ export interface TodoFieldRefs {
   readonly completed_at: Prisma.FieldRef<"Todo", 'DateTime'>
   readonly cancelled_at: Prisma.FieldRef<"Todo", 'DateTime'>
   readonly source: Prisma.FieldRef<"Todo", 'ActorSource'>
-  readonly message_id: Prisma.FieldRef<"Todo", 'String'>
+  readonly conversation_id: Prisma.FieldRef<"Todo", 'String'>
   readonly capture_id: Prisma.FieldRef<"Todo", 'String'>
   readonly created_at: Prisma.FieldRef<"Todo", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Todo", 'DateTime'>
@@ -2056,22 +2056,22 @@ export type TodoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * Todo.message
+ * Todo.conversation
  */
-export type Todo$messageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Todo$conversationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Message
+   * Select specific fields to fetch from the Conversation
    */
-  select?: Prisma.MessageSelect<ExtArgs> | null
+  select?: Prisma.ConversationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Message
+   * Omit specific fields from the Conversation
    */
-  omit?: Prisma.MessageOmit<ExtArgs> | null
+  omit?: Prisma.ConversationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.MessageInclude<ExtArgs> | null
-  where?: Prisma.MessageWhereInput
+  include?: Prisma.ConversationInclude<ExtArgs> | null
+  where?: Prisma.ConversationWhereInput
 }
 
 /**

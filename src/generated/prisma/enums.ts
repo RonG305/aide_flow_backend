@@ -38,16 +38,6 @@ export const ActorSource = {
 export type ActorSource = (typeof ActorSource)[keyof typeof ActorSource]
 
 
-export const MessageRole = {
-  user: 'user',
-  assistant: 'assistant',
-  system: 'system',
-  tool: 'tool'
-} as const
-
-export type MessageRole = (typeof MessageRole)[keyof typeof MessageRole]
-
-
 export const ReminderStatus = {
   pending: 'pending',
   completed: 'completed',

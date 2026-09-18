@@ -51,15 +51,9 @@ export type User = Prisma.UserModel
 export type Capture = Prisma.CaptureModel
 /**
  * Model Conversation
- * One thread of talking to the agent. A voice session and a typed session are
- * the same thing here — only the Message carries the audio.
- */
-export type Conversation = Prisma.ConversationModel
-/**
- * Model Message
  * 
  */
-export type Message = Prisma.MessageModel
+export type Conversation = Prisma.ConversationModel
 /**
  * Model Reminder
  * 
