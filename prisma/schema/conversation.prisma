@@ -1,0 +1,44 @@
+/// One thread of talking to the agent. A voice session and a typed session are
+/// the same thing here — only the Message carries the audio.
+model Conversation {
+  id         String        @id @default(cuid())
+  user_id    String
+  user       User          @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  /// Agent-generated label for the thread; null until it has enough to name.
+  title      String?
+  started_at DateTime      @default(now())
+  ended_at   DateTime?
+  messages   Message[]
+  created_at DateTime      @default(now())
+  updated_at DateTime      @updatedAt
+
+  @@index([user_id, started_at])
+}
+
+model Message {
+  id              String        @id @default(cuid())
+  conversation_id String
+  conversation    Conversation  @relation(fields: [conversation_id], references: [id], onDelete: Cascade)
+  role            MessageRole
+  /// Text of the turn. For a spoken turn this is the transcript, so every
+  /// downstream reader stays audio-agnostic.
+  content         String?
+  /// Set when the turn arrived as speech; the audio itself lives in a Capture.
+  spoken          Boolean       @default(false)
+  /// Tool name + arguments for role = tool, token counts, model id — anything
+  /// not worth its own column.
+  metadata        Json?
+  attachments     Capture[]
+  reminders       Reminder[]
+  todos           Todo[]
+  created_at      DateTime      @default(now())
+
+  @@index([conversation_id, created_at])
+}
+
+enum MessageRole {
+  user
+  assistant
+  system
+  tool
+}

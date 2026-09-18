@@ -1,0 +1,33 @@
+
+model Reminder {
+  id              String         @id @default(cuid())
+  user_id         String
+  user            User           @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  title           String
+  notes           String?
+  remind_at       DateTime
+  recurrence_rule String?
+  status          ReminderStatus @default(pending)
+  notified_at     DateTime?
+  completed_at    DateTime?
+  cancelled_at    DateTime?
+  source          ActorSource    @default(agent)
+  message_id      String?
+  message         Message?       @relation(fields: [message_id], references: [id], onDelete: SetNull)
+  capture_id      String?
+  capture         Capture?       @relation(fields: [capture_id], references: [id], onDelete: SetNull)
+  created_at      DateTime       @default(now())
+  updated_at      DateTime       @updatedAt
+
+
+  @@index([user_id, status, remind_at])
+  @@index([status, remind_at])
+  @@index([message_id])
+  @@index([capture_id])
+}
+
+enum ReminderStatus {
+  pending
+  completed
+  cancelled
+}
