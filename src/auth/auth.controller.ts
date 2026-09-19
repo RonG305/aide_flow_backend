@@ -1,34 +1,72 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  HttpCode,
+  HttpStatus,
+  Query,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { ApiBearerAuth } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { LoginDto } from './dto/login-auth.dto';
+import { GetUsersDto } from './dto/get-users.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { AuthGuard } from './auth.gurads';
+import { UpdateUserDto } from './dto/update-user.dto';
 
-@Controller('auth')
+@ApiBearerAuth('jwt-auth')
+@Controller('')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post()
-  create(@Body() createAuthDto: CreateAuthDto) {
-    return this.authService.create(createAuthDto);
+  @Post('register')
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.authService.createUser(createUserDto);
   }
 
-  @Get()
-  findAll() {
-    return this.authService.findAll();
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('users')
+  getAllUsers(@Query() getUsersDto: GetUsersDto) {
+    return this.authService.getAllUsers(getUsersDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.authService.findOne(+id);
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('users/:id')
+  getUserById(@Param('id') id: string) {
+    return this.authService.getUserById(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAuthDto: UpdateAuthDto) {
-    return this.authService.update(+id, updateAuthDto);
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Patch('users/:id/update')
+  updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.authService.updateUser(id, updateUserDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.authService.remove(+id);
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Patch('users/:id/status')
+  canActivateOrDeactivateUser(@Param('id') id: string) {
+    return this.authService.CanActivateOrDeactivateUser(id);
+  }
+
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Delete('users/:id/delete')
+  deleteUser(@Param('id') id: string) {
+    return this.authService.deleteUser(id);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('login')
+  signIn(@Body() body: LoginDto) {
+    return this.authService.signIn(body.email, body.password);
   }
 }

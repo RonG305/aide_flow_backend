@@ -9,6 +9,25 @@
 * 🟢 You can import this file directly.
 */
 
+export const Status = {
+  active: 'active',
+  inactive: 'inactive',
+  suspended: 'suspended',
+  deleted: 'deleted'
+} as const
+
+export type Status = (typeof Status)[keyof typeof Status]
+
+
+export const Gender = {
+  male: 'male',
+  female: 'female',
+  other: 'other'
+} as const
+
+export type Gender = (typeof Gender)[keyof typeof Gender]
+
+
 export const CaptureKind = {
   audio: 'audio',
   image: 'image',
