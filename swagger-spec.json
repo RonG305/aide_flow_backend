@@ -435,6 +435,186 @@
           "Tasks"
         ]
       }
+    },
+    "/api/v1/reminders": {
+      "post": {
+        "operationId": "RemindersController_createReminder",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReminderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "jwt-auth": []
+          }
+        ],
+        "tags": [
+          "Reminders"
+        ]
+      },
+      "get": {
+        "operationId": "RemindersController_getAllReminders",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "completed",
+                "cancelled"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "jwt-auth": []
+          }
+        ],
+        "tags": [
+          "Reminders"
+        ]
+      }
+    },
+    "/api/v1/reminders/{id}": {
+      "get": {
+        "operationId": "RemindersController_getReminderById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "jwt-auth": []
+          }
+        ],
+        "tags": [
+          "Reminders"
+        ]
+      }
+    },
+    "/api/v1/reminders/{id}/update": {
+      "patch": {
+        "operationId": "RemindersController_updateReminder",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReminderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "jwt-auth": []
+          }
+        ],
+        "tags": [
+          "Reminders"
+        ]
+      }
+    },
+    "/api/v1/reminders/{id}/delete": {
+      "delete": {
+        "operationId": "RemindersController_deleteReminder",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "jwt-auth": []
+          }
+        ],
+        "tags": [
+          "Reminders"
+        ]
+      }
     }
   },
   "info": {
@@ -649,6 +829,72 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "CreateReminderDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Take medication"
+          },
+          "notes": {
+            "type": "string",
+            "example": "One tablet after breakfast"
+          },
+          "remind_at": {
+            "type": "string",
+            "example": "2026-09-25T08:00:00.000Z"
+          },
+          "recurrence_rule": {
+            "type": "string",
+            "example": "FREQ=DAILY;INTERVAL=1",
+            "description": "iCalendar RRULE describing how the reminder repeats"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "completed",
+              "cancelled"
+            ],
+            "default": "pending"
+          }
+        },
+        "required": [
+          "title",
+          "remind_at"
+        ]
+      },
+      "UpdateReminderDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Take medication"
+          },
+          "notes": {
+            "type": "string",
+            "example": "One tablet after breakfast"
+          },
+          "remind_at": {
+            "type": "string",
+            "example": "2026-09-25T08:00:00.000Z"
+          },
+          "recurrence_rule": {
+            "type": "string",
+            "example": "FREQ=DAILY;INTERVAL=1",
+            "description": "iCalendar RRULE describing how the reminder repeats"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "completed",
+              "cancelled"
+            ],
+            "default": "pending"
           }
         }
       }
