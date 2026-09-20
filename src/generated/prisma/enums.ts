@@ -28,27 +28,6 @@ export const Gender = {
 export type Gender = (typeof Gender)[keyof typeof Gender]
 
 
-export const CaptureKind = {
-  audio: 'audio',
-  image: 'image',
-  document: 'document',
-  text: 'text',
-  link: 'link'
-} as const
-
-export type CaptureKind = (typeof CaptureKind)[keyof typeof CaptureKind]
-
-
-export const CaptureStatus = {
-  pending: 'pending',
-  processing: 'processing',
-  ready: 'ready',
-  failed: 'failed'
-} as const
-
-export type CaptureStatus = (typeof CaptureStatus)[keyof typeof CaptureStatus]
-
-
 export const ActorSource = {
   user: 'user',
   agent: 'agent'
@@ -66,21 +45,21 @@ export const ReminderStatus = {
 export type ReminderStatus = (typeof ReminderStatus)[keyof typeof ReminderStatus]
 
 
-export const TodoStatus = {
+export const TaskStatus = {
   pending: 'pending',
   in_progress: 'in_progress',
   completed: 'completed',
   cancelled: 'cancelled'
 } as const
 
-export type TodoStatus = (typeof TodoStatus)[keyof typeof TodoStatus]
+export type TaskStatus = (typeof TaskStatus)[keyof typeof TaskStatus]
 
 
-export const TodoPriority = {
+export const TaskPriority = {
   low: 'low',
   medium: 'medium',
   high: 'high',
   urgent: 'urgent'
 } as const
 
-export type TodoPriority = (typeof TodoPriority)[keyof typeof TodoPriority]
+export type TaskPriority = (typeof TaskPriority)[keyof typeof TaskPriority]

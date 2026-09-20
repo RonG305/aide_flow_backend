@@ -239,9 +239,7 @@ export type UserWhereInput = {
   created_at?: Prisma.DateTimeFilter<"User"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"User"> | Date | string
   reminders?: Prisma.ReminderListRelationFilter
-  todos?: Prisma.TodoListRelationFilter
-  conversations?: Prisma.ConversationListRelationFilter
-  captures?: Prisma.CaptureListRelationFilter
+  tasks?: Prisma.TaskListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -258,9 +256,7 @@ export type UserOrderByWithRelationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   reminders?: Prisma.ReminderOrderByRelationAggregateInput
-  todos?: Prisma.TodoOrderByRelationAggregateInput
-  conversations?: Prisma.ConversationOrderByRelationAggregateInput
-  captures?: Prisma.CaptureOrderByRelationAggregateInput
+  tasks?: Prisma.TaskOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -280,9 +276,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   created_at?: Prisma.DateTimeFilter<"User"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"User"> | Date | string
   reminders?: Prisma.ReminderListRelationFilter
-  todos?: Prisma.TodoListRelationFilter
-  conversations?: Prisma.ConversationListRelationFilter
-  captures?: Prisma.CaptureListRelationFilter
+  tasks?: Prisma.TaskListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -335,9 +329,7 @@ export type UserCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   reminders?: Prisma.ReminderCreateNestedManyWithoutUserInput
-  todos?: Prisma.TodoCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
-  captures?: Prisma.CaptureCreateNestedManyWithoutUserInput
+  tasks?: Prisma.TaskCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -354,9 +346,7 @@ export type UserUncheckedCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutUserInput
-  todos?: Prisma.TodoUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
-  captures?: Prisma.CaptureUncheckedCreateNestedManyWithoutUserInput
+  tasks?: Prisma.TaskUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -373,9 +363,7 @@ export type UserUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reminders?: Prisma.ReminderUpdateManyWithoutUserNestedInput
-  todos?: Prisma.TodoUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
-  captures?: Prisma.CaptureUpdateManyWithoutUserNestedInput
+  tasks?: Prisma.TaskUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -392,9 +380,7 @@ export type UserUncheckedUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reminders?: Prisma.ReminderUncheckedUpdateManyWithoutUserNestedInput
-  todos?: Prisma.TodoUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
-  captures?: Prisma.CaptureUncheckedUpdateManyWithoutUserNestedInput
+  tasks?: Prisma.TaskUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -516,34 +502,6 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
-export type UserCreateNestedOneWithoutCapturesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCapturesInput, Prisma.UserUncheckedCreateWithoutCapturesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCapturesInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutCapturesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCapturesInput, Prisma.UserUncheckedCreateWithoutCapturesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCapturesInput
-  upsert?: Prisma.UserUpsertWithoutCapturesInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCapturesInput, Prisma.UserUpdateWithoutCapturesInput>, Prisma.UserUncheckedUpdateWithoutCapturesInput>
-}
-
-export type UserCreateNestedOneWithoutConversationsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutConversationsInput, Prisma.UserUncheckedCreateWithoutConversationsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutConversationsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutConversationsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutConversationsInput, Prisma.UserUncheckedCreateWithoutConversationsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutConversationsInput
-  upsert?: Prisma.UserUpsertWithoutConversationsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutConversationsInput, Prisma.UserUpdateWithoutConversationsInput>, Prisma.UserUncheckedUpdateWithoutConversationsInput>
-}
-
 export type UserCreateNestedOneWithoutRemindersInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutRemindersInput, Prisma.UserUncheckedCreateWithoutRemindersInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutRemindersInput
@@ -558,194 +516,18 @@ export type UserUpdateOneRequiredWithoutRemindersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRemindersInput, Prisma.UserUpdateWithoutRemindersInput>, Prisma.UserUncheckedUpdateWithoutRemindersInput>
 }
 
-export type UserCreateNestedOneWithoutTodosInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutTodosInput, Prisma.UserUncheckedCreateWithoutTodosInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTodosInput
+export type UserCreateNestedOneWithoutTasksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTasksInput, Prisma.UserUncheckedCreateWithoutTasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTasksInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutTodosNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutTodosInput, Prisma.UserUncheckedCreateWithoutTodosInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTodosInput
-  upsert?: Prisma.UserUpsertWithoutTodosInput
+export type UserUpdateOneRequiredWithoutTasksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTasksInput, Prisma.UserUncheckedCreateWithoutTasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTasksInput
+  upsert?: Prisma.UserUpsertWithoutTasksInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTodosInput, Prisma.UserUpdateWithoutTodosInput>, Prisma.UserUncheckedUpdateWithoutTodosInput>
-}
-
-export type UserCreateWithoutCapturesInput = {
-  id?: string
-  email: string
-  password: string
-  first_name?: string | null
-  last_name?: string | null
-  gender?: $Enums.Gender | null
-  date_of_birth?: string | null
-  timezone?: string
-  accept_terms_conditions?: boolean
-  status?: $Enums.Status
-  created_at?: Date | string
-  updated_at?: Date | string
-  reminders?: Prisma.ReminderCreateNestedManyWithoutUserInput
-  todos?: Prisma.TodoCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutCapturesInput = {
-  id?: string
-  email: string
-  password: string
-  first_name?: string | null
-  last_name?: string | null
-  gender?: $Enums.Gender | null
-  date_of_birth?: string | null
-  timezone?: string
-  accept_terms_conditions?: boolean
-  status?: $Enums.Status
-  created_at?: Date | string
-  updated_at?: Date | string
-  reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutUserInput
-  todos?: Prisma.TodoUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutCapturesInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutCapturesInput, Prisma.UserUncheckedCreateWithoutCapturesInput>
-}
-
-export type UserUpsertWithoutCapturesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutCapturesInput, Prisma.UserUncheckedUpdateWithoutCapturesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutCapturesInput, Prisma.UserUncheckedCreateWithoutCapturesInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutCapturesInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutCapturesInput, Prisma.UserUncheckedUpdateWithoutCapturesInput>
-}
-
-export type UserUpdateWithoutCapturesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  first_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-  date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  timezone?: Prisma.StringFieldUpdateOperationsInput | string
-  accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  reminders?: Prisma.ReminderUpdateManyWithoutUserNestedInput
-  todos?: Prisma.TodoUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutCapturesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  first_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-  date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  timezone?: Prisma.StringFieldUpdateOperationsInput | string
-  accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  reminders?: Prisma.ReminderUncheckedUpdateManyWithoutUserNestedInput
-  todos?: Prisma.TodoUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutConversationsInput = {
-  id?: string
-  email: string
-  password: string
-  first_name?: string | null
-  last_name?: string | null
-  gender?: $Enums.Gender | null
-  date_of_birth?: string | null
-  timezone?: string
-  accept_terms_conditions?: boolean
-  status?: $Enums.Status
-  created_at?: Date | string
-  updated_at?: Date | string
-  reminders?: Prisma.ReminderCreateNestedManyWithoutUserInput
-  todos?: Prisma.TodoCreateNestedManyWithoutUserInput
-  captures?: Prisma.CaptureCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutConversationsInput = {
-  id?: string
-  email: string
-  password: string
-  first_name?: string | null
-  last_name?: string | null
-  gender?: $Enums.Gender | null
-  date_of_birth?: string | null
-  timezone?: string
-  accept_terms_conditions?: boolean
-  status?: $Enums.Status
-  created_at?: Date | string
-  updated_at?: Date | string
-  reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutUserInput
-  todos?: Prisma.TodoUncheckedCreateNestedManyWithoutUserInput
-  captures?: Prisma.CaptureUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutConversationsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutConversationsInput, Prisma.UserUncheckedCreateWithoutConversationsInput>
-}
-
-export type UserUpsertWithoutConversationsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutConversationsInput, Prisma.UserUncheckedUpdateWithoutConversationsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutConversationsInput, Prisma.UserUncheckedCreateWithoutConversationsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutConversationsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutConversationsInput, Prisma.UserUncheckedUpdateWithoutConversationsInput>
-}
-
-export type UserUpdateWithoutConversationsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  first_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-  date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  timezone?: Prisma.StringFieldUpdateOperationsInput | string
-  accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  reminders?: Prisma.ReminderUpdateManyWithoutUserNestedInput
-  todos?: Prisma.TodoUpdateManyWithoutUserNestedInput
-  captures?: Prisma.CaptureUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutConversationsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  first_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-  date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  timezone?: Prisma.StringFieldUpdateOperationsInput | string
-  accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  reminders?: Prisma.ReminderUncheckedUpdateManyWithoutUserNestedInput
-  todos?: Prisma.TodoUncheckedUpdateManyWithoutUserNestedInput
-  captures?: Prisma.CaptureUncheckedUpdateManyWithoutUserNestedInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTasksInput, Prisma.UserUpdateWithoutTasksInput>, Prisma.UserUncheckedUpdateWithoutTasksInput>
 }
 
 export type UserCreateWithoutRemindersInput = {
@@ -761,9 +543,7 @@ export type UserCreateWithoutRemindersInput = {
   status?: $Enums.Status
   created_at?: Date | string
   updated_at?: Date | string
-  todos?: Prisma.TodoCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
-  captures?: Prisma.CaptureCreateNestedManyWithoutUserInput
+  tasks?: Prisma.TaskCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRemindersInput = {
@@ -779,9 +559,7 @@ export type UserUncheckedCreateWithoutRemindersInput = {
   status?: $Enums.Status
   created_at?: Date | string
   updated_at?: Date | string
-  todos?: Prisma.TodoUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
-  captures?: Prisma.CaptureUncheckedCreateNestedManyWithoutUserInput
+  tasks?: Prisma.TaskUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRemindersInput = {
@@ -813,9 +591,7 @@ export type UserUpdateWithoutRemindersInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  todos?: Prisma.TodoUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
-  captures?: Prisma.CaptureUpdateManyWithoutUserNestedInput
+  tasks?: Prisma.TaskUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRemindersInput = {
@@ -831,12 +607,10 @@ export type UserUncheckedUpdateWithoutRemindersInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  todos?: Prisma.TodoUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
-  captures?: Prisma.CaptureUncheckedUpdateManyWithoutUserNestedInput
+  tasks?: Prisma.TaskUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutTodosInput = {
+export type UserCreateWithoutTasksInput = {
   id?: string
   email: string
   password: string
@@ -850,11 +624,9 @@ export type UserCreateWithoutTodosInput = {
   created_at?: Date | string
   updated_at?: Date | string
   reminders?: Prisma.ReminderCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
-  captures?: Prisma.CaptureCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutTodosInput = {
+export type UserUncheckedCreateWithoutTasksInput = {
   id?: string
   email: string
   password: string
@@ -868,27 +640,25 @@ export type UserUncheckedCreateWithoutTodosInput = {
   created_at?: Date | string
   updated_at?: Date | string
   reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
-  captures?: Prisma.CaptureUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutTodosInput = {
+export type UserCreateOrConnectWithoutTasksInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutTodosInput, Prisma.UserUncheckedCreateWithoutTodosInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTasksInput, Prisma.UserUncheckedCreateWithoutTasksInput>
 }
 
-export type UserUpsertWithoutTodosInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutTodosInput, Prisma.UserUncheckedUpdateWithoutTodosInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutTodosInput, Prisma.UserUncheckedCreateWithoutTodosInput>
+export type UserUpsertWithoutTasksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTasksInput, Prisma.UserUncheckedUpdateWithoutTasksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTasksInput, Prisma.UserUncheckedCreateWithoutTasksInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutTodosInput = {
+export type UserUpdateToOneWithWhereWithoutTasksInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutTodosInput, Prisma.UserUncheckedUpdateWithoutTodosInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTasksInput, Prisma.UserUncheckedUpdateWithoutTasksInput>
 }
 
-export type UserUpdateWithoutTodosInput = {
+export type UserUpdateWithoutTasksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -902,11 +672,9 @@ export type UserUpdateWithoutTodosInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reminders?: Prisma.ReminderUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
-  captures?: Prisma.CaptureUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutTodosInput = {
+export type UserUncheckedUpdateWithoutTasksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -920,8 +688,6 @@ export type UserUncheckedUpdateWithoutTodosInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reminders?: Prisma.ReminderUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
-  captures?: Prisma.CaptureUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -931,16 +697,12 @@ export type UserUncheckedUpdateWithoutTodosInput = {
 
 export type UserCountOutputType = {
   reminders: number
-  todos: number
-  conversations: number
-  captures: number
+  tasks: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   reminders?: boolean | UserCountOutputTypeCountRemindersArgs
-  todos?: boolean | UserCountOutputTypeCountTodosArgs
-  conversations?: boolean | UserCountOutputTypeCountConversationsArgs
-  captures?: boolean | UserCountOutputTypeCountCapturesArgs
+  tasks?: boolean | UserCountOutputTypeCountTasksArgs
 }
 
 /**
@@ -963,22 +725,8 @@ export type UserCountOutputTypeCountRemindersArgs<ExtArgs extends runtime.Types.
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountTodosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TodoWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountConversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ConversationWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountCapturesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CaptureWhereInput
+export type UserCountOutputTypeCountTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TaskWhereInput
 }
 
 
@@ -996,9 +744,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   created_at?: boolean
   updated_at?: boolean
   reminders?: boolean | Prisma.User$remindersArgs<ExtArgs>
-  todos?: boolean | Prisma.User$todosArgs<ExtArgs>
-  conversations?: boolean | Prisma.User$conversationsArgs<ExtArgs>
-  captures?: boolean | Prisma.User$capturesArgs<ExtArgs>
+  tasks?: boolean | Prisma.User$tasksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1050,9 +796,7 @@ export type UserSelectScalar = {
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "first_name" | "last_name" | "gender" | "date_of_birth" | "timezone" | "accept_terms_conditions" | "status" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   reminders?: boolean | Prisma.User$remindersArgs<ExtArgs>
-  todos?: boolean | Prisma.User$todosArgs<ExtArgs>
-  conversations?: boolean | Prisma.User$conversationsArgs<ExtArgs>
-  captures?: boolean | Prisma.User$capturesArgs<ExtArgs>
+  tasks?: boolean | Prisma.User$tasksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1062,9 +806,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     reminders: Prisma.$ReminderPayload<ExtArgs>[]
-    todos: Prisma.$TodoPayload<ExtArgs>[]
-    conversations: Prisma.$ConversationPayload<ExtArgs>[]
-    captures: Prisma.$CapturePayload<ExtArgs>[]
+    tasks: Prisma.$TaskPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1474,9 +1216,7 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   reminders<T extends Prisma.User$remindersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$remindersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReminderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  todos<T extends Prisma.User$todosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$todosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  conversations<T extends Prisma.User$conversationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  captures<T extends Prisma.User$capturesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$capturesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CapturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tasks<T extends Prisma.User$tasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$tasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1935,75 +1675,27 @@ export type User$remindersArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.todos
+ * User.tasks
  */
-export type User$todosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$tasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Todo
+   * Select specific fields to fetch from the Task
    */
-  select?: Prisma.TodoSelect<ExtArgs> | null
+  select?: Prisma.TaskSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Todo
+   * Omit specific fields from the Task
    */
-  omit?: Prisma.TodoOmit<ExtArgs> | null
+  omit?: Prisma.TaskOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.TodoInclude<ExtArgs> | null
-  where?: Prisma.TodoWhereInput
-  orderBy?: Prisma.TodoOrderByWithRelationInput | Prisma.TodoOrderByWithRelationInput[]
-  cursor?: Prisma.TodoWhereUniqueInput
+  include?: Prisma.TaskInclude<ExtArgs> | null
+  where?: Prisma.TaskWhereInput
+  orderBy?: Prisma.TaskOrderByWithRelationInput | Prisma.TaskOrderByWithRelationInput[]
+  cursor?: Prisma.TaskWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.TodoScalarFieldEnum | Prisma.TodoScalarFieldEnum[]
-}
-
-/**
- * User.conversations
- */
-export type User$conversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Conversation
-   */
-  select?: Prisma.ConversationSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Conversation
-   */
-  omit?: Prisma.ConversationOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ConversationInclude<ExtArgs> | null
-  where?: Prisma.ConversationWhereInput
-  orderBy?: Prisma.ConversationOrderByWithRelationInput | Prisma.ConversationOrderByWithRelationInput[]
-  cursor?: Prisma.ConversationWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ConversationScalarFieldEnum | Prisma.ConversationScalarFieldEnum[]
-}
-
-/**
- * User.captures
- */
-export type User$capturesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Capture
-   */
-  select?: Prisma.CaptureSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Capture
-   */
-  omit?: Prisma.CaptureOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CaptureInclude<ExtArgs> | null
-  where?: Prisma.CaptureWhereInput
-  orderBy?: Prisma.CaptureOrderByWithRelationInput | Prisma.CaptureOrderByWithRelationInput[]
-  cursor?: Prisma.CaptureWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CaptureScalarFieldEnum | Prisma.CaptureScalarFieldEnum[]
+  distinct?: Prisma.TaskScalarFieldEnum | Prisma.TaskScalarFieldEnum[]
 }
 
 /**

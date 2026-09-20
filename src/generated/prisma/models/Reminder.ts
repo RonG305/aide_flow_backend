@@ -36,8 +36,6 @@ export type ReminderMinAggregateOutputType = {
   completed_at: Date | null
   cancelled_at: Date | null
   source: $Enums.ActorSource | null
-  conversation_id: string | null
-  capture_id: string | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -54,8 +52,6 @@ export type ReminderMaxAggregateOutputType = {
   completed_at: Date | null
   cancelled_at: Date | null
   source: $Enums.ActorSource | null
-  conversation_id: string | null
-  capture_id: string | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -72,8 +68,6 @@ export type ReminderCountAggregateOutputType = {
   completed_at: number
   cancelled_at: number
   source: number
-  conversation_id: number
-  capture_id: number
   created_at: number
   updated_at: number
   _all: number
@@ -92,8 +86,6 @@ export type ReminderMinAggregateInputType = {
   completed_at?: true
   cancelled_at?: true
   source?: true
-  conversation_id?: true
-  capture_id?: true
   created_at?: true
   updated_at?: true
 }
@@ -110,8 +102,6 @@ export type ReminderMaxAggregateInputType = {
   completed_at?: true
   cancelled_at?: true
   source?: true
-  conversation_id?: true
-  capture_id?: true
   created_at?: true
   updated_at?: true
 }
@@ -128,8 +118,6 @@ export type ReminderCountAggregateInputType = {
   completed_at?: true
   cancelled_at?: true
   source?: true
-  conversation_id?: true
-  capture_id?: true
   created_at?: true
   updated_at?: true
   _all?: true
@@ -219,8 +207,6 @@ export type ReminderGroupByOutputType = {
   completed_at: Date | null
   cancelled_at: Date | null
   source: $Enums.ActorSource
-  conversation_id: string | null
-  capture_id: string | null
   created_at: Date
   updated_at: Date
   _count: ReminderCountAggregateOutputType | null
@@ -258,13 +244,9 @@ export type ReminderWhereInput = {
   completed_at?: Prisma.DateTimeNullableFilter<"Reminder"> | Date | string | null
   cancelled_at?: Prisma.DateTimeNullableFilter<"Reminder"> | Date | string | null
   source?: Prisma.EnumActorSourceFilter<"Reminder"> | $Enums.ActorSource
-  conversation_id?: Prisma.StringNullableFilter<"Reminder"> | string | null
-  capture_id?: Prisma.StringNullableFilter<"Reminder"> | string | null
   created_at?: Prisma.DateTimeFilter<"Reminder"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Reminder"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  conversation?: Prisma.XOR<Prisma.ConversationNullableScalarRelationFilter, Prisma.ConversationWhereInput> | null
-  capture?: Prisma.XOR<Prisma.CaptureNullableScalarRelationFilter, Prisma.CaptureWhereInput> | null
 }
 
 export type ReminderOrderByWithRelationInput = {
@@ -279,13 +261,9 @@ export type ReminderOrderByWithRelationInput = {
   completed_at?: Prisma.SortOrderInput | Prisma.SortOrder
   cancelled_at?: Prisma.SortOrderInput | Prisma.SortOrder
   source?: Prisma.SortOrder
-  conversation_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  capture_id?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
-  conversation?: Prisma.ConversationOrderByWithRelationInput
-  capture?: Prisma.CaptureOrderByWithRelationInput
 }
 
 export type ReminderWhereUniqueInput = Prisma.AtLeast<{
@@ -303,13 +281,9 @@ export type ReminderWhereUniqueInput = Prisma.AtLeast<{
   completed_at?: Prisma.DateTimeNullableFilter<"Reminder"> | Date | string | null
   cancelled_at?: Prisma.DateTimeNullableFilter<"Reminder"> | Date | string | null
   source?: Prisma.EnumActorSourceFilter<"Reminder"> | $Enums.ActorSource
-  conversation_id?: Prisma.StringNullableFilter<"Reminder"> | string | null
-  capture_id?: Prisma.StringNullableFilter<"Reminder"> | string | null
   created_at?: Prisma.DateTimeFilter<"Reminder"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Reminder"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  conversation?: Prisma.XOR<Prisma.ConversationNullableScalarRelationFilter, Prisma.ConversationWhereInput> | null
-  capture?: Prisma.XOR<Prisma.CaptureNullableScalarRelationFilter, Prisma.CaptureWhereInput> | null
 }, "id">
 
 export type ReminderOrderByWithAggregationInput = {
@@ -324,8 +298,6 @@ export type ReminderOrderByWithAggregationInput = {
   completed_at?: Prisma.SortOrderInput | Prisma.SortOrder
   cancelled_at?: Prisma.SortOrderInput | Prisma.SortOrder
   source?: Prisma.SortOrder
-  conversation_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  capture_id?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   _count?: Prisma.ReminderCountOrderByAggregateInput
@@ -348,8 +320,6 @@ export type ReminderScalarWhereWithAggregatesInput = {
   completed_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Reminder"> | Date | string | null
   cancelled_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Reminder"> | Date | string | null
   source?: Prisma.EnumActorSourceWithAggregatesFilter<"Reminder"> | $Enums.ActorSource
-  conversation_id?: Prisma.StringNullableWithAggregatesFilter<"Reminder"> | string | null
-  capture_id?: Prisma.StringNullableWithAggregatesFilter<"Reminder"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Reminder"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Reminder"> | Date | string
 }
@@ -368,8 +338,6 @@ export type ReminderCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutRemindersInput
-  conversation?: Prisma.ConversationCreateNestedOneWithoutRemindersInput
-  capture?: Prisma.CaptureCreateNestedOneWithoutRemindersInput
 }
 
 export type ReminderUncheckedCreateInput = {
@@ -384,8 +352,6 @@ export type ReminderUncheckedCreateInput = {
   completed_at?: Date | string | null
   cancelled_at?: Date | string | null
   source?: $Enums.ActorSource
-  conversation_id?: string | null
-  capture_id?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -404,8 +370,6 @@ export type ReminderUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutRemindersNestedInput
-  conversation?: Prisma.ConversationUpdateOneWithoutRemindersNestedInput
-  capture?: Prisma.CaptureUpdateOneWithoutRemindersNestedInput
 }
 
 export type ReminderUncheckedUpdateInput = {
@@ -420,8 +384,6 @@ export type ReminderUncheckedUpdateInput = {
   completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capture_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -438,8 +400,6 @@ export type ReminderCreateManyInput = {
   completed_at?: Date | string | null
   cancelled_at?: Date | string | null
   source?: $Enums.ActorSource
-  conversation_id?: string | null
-  capture_id?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -471,8 +431,6 @@ export type ReminderUncheckedUpdateManyInput = {
   completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capture_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -499,8 +457,6 @@ export type ReminderCountOrderByAggregateInput = {
   completed_at?: Prisma.SortOrder
   cancelled_at?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  conversation_id?: Prisma.SortOrder
-  capture_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -517,8 +473,6 @@ export type ReminderMaxOrderByAggregateInput = {
   completed_at?: Prisma.SortOrder
   cancelled_at?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  conversation_id?: Prisma.SortOrder
-  capture_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -535,8 +489,6 @@ export type ReminderMinOrderByAggregateInput = {
   completed_at?: Prisma.SortOrder
   cancelled_at?: Prisma.SortOrder
   source?: Prisma.SortOrder
-  conversation_id?: Prisma.SortOrder
-  capture_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -583,90 +535,6 @@ export type ReminderUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.ReminderScalarWhereInput | Prisma.ReminderScalarWhereInput[]
 }
 
-export type ReminderCreateNestedManyWithoutCaptureInput = {
-  create?: Prisma.XOR<Prisma.ReminderCreateWithoutCaptureInput, Prisma.ReminderUncheckedCreateWithoutCaptureInput> | Prisma.ReminderCreateWithoutCaptureInput[] | Prisma.ReminderUncheckedCreateWithoutCaptureInput[]
-  connectOrCreate?: Prisma.ReminderCreateOrConnectWithoutCaptureInput | Prisma.ReminderCreateOrConnectWithoutCaptureInput[]
-  createMany?: Prisma.ReminderCreateManyCaptureInputEnvelope
-  connect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-}
-
-export type ReminderUncheckedCreateNestedManyWithoutCaptureInput = {
-  create?: Prisma.XOR<Prisma.ReminderCreateWithoutCaptureInput, Prisma.ReminderUncheckedCreateWithoutCaptureInput> | Prisma.ReminderCreateWithoutCaptureInput[] | Prisma.ReminderUncheckedCreateWithoutCaptureInput[]
-  connectOrCreate?: Prisma.ReminderCreateOrConnectWithoutCaptureInput | Prisma.ReminderCreateOrConnectWithoutCaptureInput[]
-  createMany?: Prisma.ReminderCreateManyCaptureInputEnvelope
-  connect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-}
-
-export type ReminderUpdateManyWithoutCaptureNestedInput = {
-  create?: Prisma.XOR<Prisma.ReminderCreateWithoutCaptureInput, Prisma.ReminderUncheckedCreateWithoutCaptureInput> | Prisma.ReminderCreateWithoutCaptureInput[] | Prisma.ReminderUncheckedCreateWithoutCaptureInput[]
-  connectOrCreate?: Prisma.ReminderCreateOrConnectWithoutCaptureInput | Prisma.ReminderCreateOrConnectWithoutCaptureInput[]
-  upsert?: Prisma.ReminderUpsertWithWhereUniqueWithoutCaptureInput | Prisma.ReminderUpsertWithWhereUniqueWithoutCaptureInput[]
-  createMany?: Prisma.ReminderCreateManyCaptureInputEnvelope
-  set?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  disconnect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  delete?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  connect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  update?: Prisma.ReminderUpdateWithWhereUniqueWithoutCaptureInput | Prisma.ReminderUpdateWithWhereUniqueWithoutCaptureInput[]
-  updateMany?: Prisma.ReminderUpdateManyWithWhereWithoutCaptureInput | Prisma.ReminderUpdateManyWithWhereWithoutCaptureInput[]
-  deleteMany?: Prisma.ReminderScalarWhereInput | Prisma.ReminderScalarWhereInput[]
-}
-
-export type ReminderUncheckedUpdateManyWithoutCaptureNestedInput = {
-  create?: Prisma.XOR<Prisma.ReminderCreateWithoutCaptureInput, Prisma.ReminderUncheckedCreateWithoutCaptureInput> | Prisma.ReminderCreateWithoutCaptureInput[] | Prisma.ReminderUncheckedCreateWithoutCaptureInput[]
-  connectOrCreate?: Prisma.ReminderCreateOrConnectWithoutCaptureInput | Prisma.ReminderCreateOrConnectWithoutCaptureInput[]
-  upsert?: Prisma.ReminderUpsertWithWhereUniqueWithoutCaptureInput | Prisma.ReminderUpsertWithWhereUniqueWithoutCaptureInput[]
-  createMany?: Prisma.ReminderCreateManyCaptureInputEnvelope
-  set?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  disconnect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  delete?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  connect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  update?: Prisma.ReminderUpdateWithWhereUniqueWithoutCaptureInput | Prisma.ReminderUpdateWithWhereUniqueWithoutCaptureInput[]
-  updateMany?: Prisma.ReminderUpdateManyWithWhereWithoutCaptureInput | Prisma.ReminderUpdateManyWithWhereWithoutCaptureInput[]
-  deleteMany?: Prisma.ReminderScalarWhereInput | Prisma.ReminderScalarWhereInput[]
-}
-
-export type ReminderCreateNestedManyWithoutConversationInput = {
-  create?: Prisma.XOR<Prisma.ReminderCreateWithoutConversationInput, Prisma.ReminderUncheckedCreateWithoutConversationInput> | Prisma.ReminderCreateWithoutConversationInput[] | Prisma.ReminderUncheckedCreateWithoutConversationInput[]
-  connectOrCreate?: Prisma.ReminderCreateOrConnectWithoutConversationInput | Prisma.ReminderCreateOrConnectWithoutConversationInput[]
-  createMany?: Prisma.ReminderCreateManyConversationInputEnvelope
-  connect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-}
-
-export type ReminderUncheckedCreateNestedManyWithoutConversationInput = {
-  create?: Prisma.XOR<Prisma.ReminderCreateWithoutConversationInput, Prisma.ReminderUncheckedCreateWithoutConversationInput> | Prisma.ReminderCreateWithoutConversationInput[] | Prisma.ReminderUncheckedCreateWithoutConversationInput[]
-  connectOrCreate?: Prisma.ReminderCreateOrConnectWithoutConversationInput | Prisma.ReminderCreateOrConnectWithoutConversationInput[]
-  createMany?: Prisma.ReminderCreateManyConversationInputEnvelope
-  connect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-}
-
-export type ReminderUpdateManyWithoutConversationNestedInput = {
-  create?: Prisma.XOR<Prisma.ReminderCreateWithoutConversationInput, Prisma.ReminderUncheckedCreateWithoutConversationInput> | Prisma.ReminderCreateWithoutConversationInput[] | Prisma.ReminderUncheckedCreateWithoutConversationInput[]
-  connectOrCreate?: Prisma.ReminderCreateOrConnectWithoutConversationInput | Prisma.ReminderCreateOrConnectWithoutConversationInput[]
-  upsert?: Prisma.ReminderUpsertWithWhereUniqueWithoutConversationInput | Prisma.ReminderUpsertWithWhereUniqueWithoutConversationInput[]
-  createMany?: Prisma.ReminderCreateManyConversationInputEnvelope
-  set?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  disconnect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  delete?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  connect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  update?: Prisma.ReminderUpdateWithWhereUniqueWithoutConversationInput | Prisma.ReminderUpdateWithWhereUniqueWithoutConversationInput[]
-  updateMany?: Prisma.ReminderUpdateManyWithWhereWithoutConversationInput | Prisma.ReminderUpdateManyWithWhereWithoutConversationInput[]
-  deleteMany?: Prisma.ReminderScalarWhereInput | Prisma.ReminderScalarWhereInput[]
-}
-
-export type ReminderUncheckedUpdateManyWithoutConversationNestedInput = {
-  create?: Prisma.XOR<Prisma.ReminderCreateWithoutConversationInput, Prisma.ReminderUncheckedCreateWithoutConversationInput> | Prisma.ReminderCreateWithoutConversationInput[] | Prisma.ReminderUncheckedCreateWithoutConversationInput[]
-  connectOrCreate?: Prisma.ReminderCreateOrConnectWithoutConversationInput | Prisma.ReminderCreateOrConnectWithoutConversationInput[]
-  upsert?: Prisma.ReminderUpsertWithWhereUniqueWithoutConversationInput | Prisma.ReminderUpsertWithWhereUniqueWithoutConversationInput[]
-  createMany?: Prisma.ReminderCreateManyConversationInputEnvelope
-  set?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  disconnect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  delete?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  connect?: Prisma.ReminderWhereUniqueInput | Prisma.ReminderWhereUniqueInput[]
-  update?: Prisma.ReminderUpdateWithWhereUniqueWithoutConversationInput | Prisma.ReminderUpdateWithWhereUniqueWithoutConversationInput[]
-  updateMany?: Prisma.ReminderUpdateManyWithWhereWithoutConversationInput | Prisma.ReminderUpdateManyWithWhereWithoutConversationInput[]
-  deleteMany?: Prisma.ReminderScalarWhereInput | Prisma.ReminderScalarWhereInput[]
-}
-
 export type EnumReminderStatusFieldUpdateOperationsInput = {
   set?: $Enums.ReminderStatus
 }
@@ -692,8 +560,6 @@ export type ReminderCreateWithoutUserInput = {
   source?: $Enums.ActorSource
   created_at?: Date | string
   updated_at?: Date | string
-  conversation?: Prisma.ConversationCreateNestedOneWithoutRemindersInput
-  capture?: Prisma.CaptureCreateNestedOneWithoutRemindersInput
 }
 
 export type ReminderUncheckedCreateWithoutUserInput = {
@@ -707,8 +573,6 @@ export type ReminderUncheckedCreateWithoutUserInput = {
   completed_at?: Date | string | null
   cancelled_at?: Date | string | null
   source?: $Enums.ActorSource
-  conversation_id?: string | null
-  capture_id?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -754,130 +618,8 @@ export type ReminderScalarWhereInput = {
   completed_at?: Prisma.DateTimeNullableFilter<"Reminder"> | Date | string | null
   cancelled_at?: Prisma.DateTimeNullableFilter<"Reminder"> | Date | string | null
   source?: Prisma.EnumActorSourceFilter<"Reminder"> | $Enums.ActorSource
-  conversation_id?: Prisma.StringNullableFilter<"Reminder"> | string | null
-  capture_id?: Prisma.StringNullableFilter<"Reminder"> | string | null
   created_at?: Prisma.DateTimeFilter<"Reminder"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Reminder"> | Date | string
-}
-
-export type ReminderCreateWithoutCaptureInput = {
-  id?: string
-  title: string
-  notes?: string | null
-  remind_at: Date | string
-  recurrence_rule?: string | null
-  status?: $Enums.ReminderStatus
-  notified_at?: Date | string | null
-  completed_at?: Date | string | null
-  cancelled_at?: Date | string | null
-  source?: $Enums.ActorSource
-  created_at?: Date | string
-  updated_at?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutRemindersInput
-  conversation?: Prisma.ConversationCreateNestedOneWithoutRemindersInput
-}
-
-export type ReminderUncheckedCreateWithoutCaptureInput = {
-  id?: string
-  user_id: string
-  title: string
-  notes?: string | null
-  remind_at: Date | string
-  recurrence_rule?: string | null
-  status?: $Enums.ReminderStatus
-  notified_at?: Date | string | null
-  completed_at?: Date | string | null
-  cancelled_at?: Date | string | null
-  source?: $Enums.ActorSource
-  conversation_id?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
-}
-
-export type ReminderCreateOrConnectWithoutCaptureInput = {
-  where: Prisma.ReminderWhereUniqueInput
-  create: Prisma.XOR<Prisma.ReminderCreateWithoutCaptureInput, Prisma.ReminderUncheckedCreateWithoutCaptureInput>
-}
-
-export type ReminderCreateManyCaptureInputEnvelope = {
-  data: Prisma.ReminderCreateManyCaptureInput | Prisma.ReminderCreateManyCaptureInput[]
-  skipDuplicates?: boolean
-}
-
-export type ReminderUpsertWithWhereUniqueWithoutCaptureInput = {
-  where: Prisma.ReminderWhereUniqueInput
-  update: Prisma.XOR<Prisma.ReminderUpdateWithoutCaptureInput, Prisma.ReminderUncheckedUpdateWithoutCaptureInput>
-  create: Prisma.XOR<Prisma.ReminderCreateWithoutCaptureInput, Prisma.ReminderUncheckedCreateWithoutCaptureInput>
-}
-
-export type ReminderUpdateWithWhereUniqueWithoutCaptureInput = {
-  where: Prisma.ReminderWhereUniqueInput
-  data: Prisma.XOR<Prisma.ReminderUpdateWithoutCaptureInput, Prisma.ReminderUncheckedUpdateWithoutCaptureInput>
-}
-
-export type ReminderUpdateManyWithWhereWithoutCaptureInput = {
-  where: Prisma.ReminderScalarWhereInput
-  data: Prisma.XOR<Prisma.ReminderUpdateManyMutationInput, Prisma.ReminderUncheckedUpdateManyWithoutCaptureInput>
-}
-
-export type ReminderCreateWithoutConversationInput = {
-  id?: string
-  title: string
-  notes?: string | null
-  remind_at: Date | string
-  recurrence_rule?: string | null
-  status?: $Enums.ReminderStatus
-  notified_at?: Date | string | null
-  completed_at?: Date | string | null
-  cancelled_at?: Date | string | null
-  source?: $Enums.ActorSource
-  created_at?: Date | string
-  updated_at?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutRemindersInput
-  capture?: Prisma.CaptureCreateNestedOneWithoutRemindersInput
-}
-
-export type ReminderUncheckedCreateWithoutConversationInput = {
-  id?: string
-  user_id: string
-  title: string
-  notes?: string | null
-  remind_at: Date | string
-  recurrence_rule?: string | null
-  status?: $Enums.ReminderStatus
-  notified_at?: Date | string | null
-  completed_at?: Date | string | null
-  cancelled_at?: Date | string | null
-  source?: $Enums.ActorSource
-  capture_id?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
-}
-
-export type ReminderCreateOrConnectWithoutConversationInput = {
-  where: Prisma.ReminderWhereUniqueInput
-  create: Prisma.XOR<Prisma.ReminderCreateWithoutConversationInput, Prisma.ReminderUncheckedCreateWithoutConversationInput>
-}
-
-export type ReminderCreateManyConversationInputEnvelope = {
-  data: Prisma.ReminderCreateManyConversationInput | Prisma.ReminderCreateManyConversationInput[]
-  skipDuplicates?: boolean
-}
-
-export type ReminderUpsertWithWhereUniqueWithoutConversationInput = {
-  where: Prisma.ReminderWhereUniqueInput
-  update: Prisma.XOR<Prisma.ReminderUpdateWithoutConversationInput, Prisma.ReminderUncheckedUpdateWithoutConversationInput>
-  create: Prisma.XOR<Prisma.ReminderCreateWithoutConversationInput, Prisma.ReminderUncheckedCreateWithoutConversationInput>
-}
-
-export type ReminderUpdateWithWhereUniqueWithoutConversationInput = {
-  where: Prisma.ReminderWhereUniqueInput
-  data: Prisma.XOR<Prisma.ReminderUpdateWithoutConversationInput, Prisma.ReminderUncheckedUpdateWithoutConversationInput>
-}
-
-export type ReminderUpdateManyWithWhereWithoutConversationInput = {
-  where: Prisma.ReminderScalarWhereInput
-  data: Prisma.XOR<Prisma.ReminderUpdateManyMutationInput, Prisma.ReminderUncheckedUpdateManyWithoutConversationInput>
 }
 
 export type ReminderCreateManyUserInput = {
@@ -891,8 +633,6 @@ export type ReminderCreateManyUserInput = {
   completed_at?: Date | string | null
   cancelled_at?: Date | string | null
   source?: $Enums.ActorSource
-  conversation_id?: string | null
-  capture_id?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -910,8 +650,6 @@ export type ReminderUpdateWithoutUserInput = {
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  conversation?: Prisma.ConversationUpdateOneWithoutRemindersNestedInput
-  capture?: Prisma.CaptureUpdateOneWithoutRemindersNestedInput
 }
 
 export type ReminderUncheckedUpdateWithoutUserInput = {
@@ -925,8 +663,6 @@ export type ReminderUncheckedUpdateWithoutUserInput = {
   completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capture_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -942,144 +678,6 @@ export type ReminderUncheckedUpdateManyWithoutUserInput = {
   completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  capture_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type ReminderCreateManyCaptureInput = {
-  id?: string
-  user_id: string
-  title: string
-  notes?: string | null
-  remind_at: Date | string
-  recurrence_rule?: string | null
-  status?: $Enums.ReminderStatus
-  notified_at?: Date | string | null
-  completed_at?: Date | string | null
-  cancelled_at?: Date | string | null
-  source?: $Enums.ActorSource
-  conversation_id?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
-}
-
-export type ReminderUpdateWithoutCaptureInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remind_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recurrence_rule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumReminderStatusFieldUpdateOperationsInput | $Enums.ReminderStatus
-  notified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutRemindersNestedInput
-  conversation?: Prisma.ConversationUpdateOneWithoutRemindersNestedInput
-}
-
-export type ReminderUncheckedUpdateWithoutCaptureInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remind_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recurrence_rule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumReminderStatusFieldUpdateOperationsInput | $Enums.ReminderStatus
-  notified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type ReminderUncheckedUpdateManyWithoutCaptureInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remind_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recurrence_rule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumReminderStatusFieldUpdateOperationsInput | $Enums.ReminderStatus
-  notified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  conversation_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type ReminderCreateManyConversationInput = {
-  id?: string
-  user_id: string
-  title: string
-  notes?: string | null
-  remind_at: Date | string
-  recurrence_rule?: string | null
-  status?: $Enums.ReminderStatus
-  notified_at?: Date | string | null
-  completed_at?: Date | string | null
-  cancelled_at?: Date | string | null
-  source?: $Enums.ActorSource
-  capture_id?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
-}
-
-export type ReminderUpdateWithoutConversationInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remind_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recurrence_rule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumReminderStatusFieldUpdateOperationsInput | $Enums.ReminderStatus
-  notified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutRemindersNestedInput
-  capture?: Prisma.CaptureUpdateOneWithoutRemindersNestedInput
-}
-
-export type ReminderUncheckedUpdateWithoutConversationInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remind_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recurrence_rule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumReminderStatusFieldUpdateOperationsInput | $Enums.ReminderStatus
-  notified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  capture_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type ReminderUncheckedUpdateManyWithoutConversationInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remind_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recurrence_rule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumReminderStatusFieldUpdateOperationsInput | $Enums.ReminderStatus
-  notified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  completed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  cancelled_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  source?: Prisma.EnumActorSourceFieldUpdateOperationsInput | $Enums.ActorSource
-  capture_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1098,13 +696,9 @@ export type ReminderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   completed_at?: boolean
   cancelled_at?: boolean
   source?: boolean
-  conversation_id?: boolean
-  capture_id?: boolean
   created_at?: boolean
   updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  conversation?: boolean | Prisma.Reminder$conversationArgs<ExtArgs>
-  capture?: boolean | Prisma.Reminder$captureArgs<ExtArgs>
 }, ExtArgs["result"]["reminder"]>
 
 export type ReminderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1119,13 +713,9 @@ export type ReminderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   completed_at?: boolean
   cancelled_at?: boolean
   source?: boolean
-  conversation_id?: boolean
-  capture_id?: boolean
   created_at?: boolean
   updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  conversation?: boolean | Prisma.Reminder$conversationArgs<ExtArgs>
-  capture?: boolean | Prisma.Reminder$captureArgs<ExtArgs>
 }, ExtArgs["result"]["reminder"]>
 
 export type ReminderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1140,13 +730,9 @@ export type ReminderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   completed_at?: boolean
   cancelled_at?: boolean
   source?: boolean
-  conversation_id?: boolean
-  capture_id?: boolean
   created_at?: boolean
   updated_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  conversation?: boolean | Prisma.Reminder$conversationArgs<ExtArgs>
-  capture?: boolean | Prisma.Reminder$captureArgs<ExtArgs>
 }, ExtArgs["result"]["reminder"]>
 
 export type ReminderSelectScalar = {
@@ -1161,35 +747,25 @@ export type ReminderSelectScalar = {
   completed_at?: boolean
   cancelled_at?: boolean
   source?: boolean
-  conversation_id?: boolean
-  capture_id?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type ReminderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "title" | "notes" | "remind_at" | "recurrence_rule" | "status" | "notified_at" | "completed_at" | "cancelled_at" | "source" | "conversation_id" | "capture_id" | "created_at" | "updated_at", ExtArgs["result"]["reminder"]>
+export type ReminderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "title" | "notes" | "remind_at" | "recurrence_rule" | "status" | "notified_at" | "completed_at" | "cancelled_at" | "source" | "created_at" | "updated_at", ExtArgs["result"]["reminder"]>
 export type ReminderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  conversation?: boolean | Prisma.Reminder$conversationArgs<ExtArgs>
-  capture?: boolean | Prisma.Reminder$captureArgs<ExtArgs>
 }
 export type ReminderIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  conversation?: boolean | Prisma.Reminder$conversationArgs<ExtArgs>
-  capture?: boolean | Prisma.Reminder$captureArgs<ExtArgs>
 }
 export type ReminderIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  conversation?: boolean | Prisma.Reminder$conversationArgs<ExtArgs>
-  capture?: boolean | Prisma.Reminder$captureArgs<ExtArgs>
 }
 
 export type $ReminderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Reminder"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
-    conversation: Prisma.$ConversationPayload<ExtArgs> | null
-    capture: Prisma.$CapturePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1203,8 +779,6 @@ export type $ReminderPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     completed_at: Date | null
     cancelled_at: Date | null
     source: $Enums.ActorSource
-    conversation_id: string | null
-    capture_id: string | null
     created_at: Date
     updated_at: Date
   }, ExtArgs["result"]["reminder"]>
@@ -1602,8 +1176,6 @@ readonly fields: ReminderFieldRefs;
 export interface Prisma__ReminderClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  conversation<T extends Prisma.Reminder$conversationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Reminder$conversationArgs<ExtArgs>>): Prisma.Prisma__ConversationClient<runtime.Types.Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  capture<T extends Prisma.Reminder$captureArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Reminder$captureArgs<ExtArgs>>): Prisma.Prisma__CaptureClient<runtime.Types.Result.GetResult<Prisma.$CapturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1644,8 +1216,6 @@ export interface ReminderFieldRefs {
   readonly completed_at: Prisma.FieldRef<"Reminder", 'DateTime'>
   readonly cancelled_at: Prisma.FieldRef<"Reminder", 'DateTime'>
   readonly source: Prisma.FieldRef<"Reminder", 'ActorSource'>
-  readonly conversation_id: Prisma.FieldRef<"Reminder", 'String'>
-  readonly capture_id: Prisma.FieldRef<"Reminder", 'String'>
   readonly created_at: Prisma.FieldRef<"Reminder", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Reminder", 'DateTime'>
 }
@@ -2046,44 +1616,6 @@ export type ReminderDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Limit how many Reminders to delete.
    */
   limit?: number
-}
-
-/**
- * Reminder.conversation
- */
-export type Reminder$conversationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Conversation
-   */
-  select?: Prisma.ConversationSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Conversation
-   */
-  omit?: Prisma.ConversationOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ConversationInclude<ExtArgs> | null
-  where?: Prisma.ConversationWhereInput
-}
-
-/**
- * Reminder.capture
- */
-export type Reminder$captureArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Capture
-   */
-  select?: Prisma.CaptureSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Capture
-   */
-  omit?: Prisma.CaptureOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CaptureInclude<ExtArgs> | null
-  where?: Prisma.CaptureWhereInput
 }
 
 /**

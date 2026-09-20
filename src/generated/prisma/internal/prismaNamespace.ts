@@ -398,10 +398,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   User: 'User',
-  Capture: 'Capture',
-  Conversation: 'Conversation',
   Reminder: 'Reminder',
-  Todo: 'Todo'
+  Task: 'Task'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -417,7 +415,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "capture" | "conversation" | "reminder" | "todo"
+    modelProps: "user" | "reminder" | "task"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -495,154 +493,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Capture: {
-      payload: Prisma.$CapturePayload<ExtArgs>
-      fields: Prisma.CaptureFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.CaptureFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.CaptureFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload>
-        }
-        findFirst: {
-          args: Prisma.CaptureFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.CaptureFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload>
-        }
-        findMany: {
-          args: Prisma.CaptureFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload>[]
-        }
-        create: {
-          args: Prisma.CaptureCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload>
-        }
-        createMany: {
-          args: Prisma.CaptureCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.CaptureCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload>[]
-        }
-        delete: {
-          args: Prisma.CaptureDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload>
-        }
-        update: {
-          args: Prisma.CaptureUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload>
-        }
-        deleteMany: {
-          args: Prisma.CaptureDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.CaptureUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.CaptureUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload>[]
-        }
-        upsert: {
-          args: Prisma.CaptureUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CapturePayload>
-        }
-        aggregate: {
-          args: Prisma.CaptureAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateCapture>
-        }
-        groupBy: {
-          args: Prisma.CaptureGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CaptureGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.CaptureCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CaptureCountAggregateOutputType> | number
-        }
-      }
-    }
-    Conversation: {
-      payload: Prisma.$ConversationPayload<ExtArgs>
-      fields: Prisma.ConversationFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.ConversationFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.ConversationFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
-        }
-        findFirst: {
-          args: Prisma.ConversationFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.ConversationFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
-        }
-        findMany: {
-          args: Prisma.ConversationFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>[]
-        }
-        create: {
-          args: Prisma.ConversationCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
-        }
-        createMany: {
-          args: Prisma.ConversationCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.ConversationCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>[]
-        }
-        delete: {
-          args: Prisma.ConversationDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
-        }
-        update: {
-          args: Prisma.ConversationUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
-        }
-        deleteMany: {
-          args: Prisma.ConversationDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.ConversationUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.ConversationUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>[]
-        }
-        upsert: {
-          args: Prisma.ConversationUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
-        }
-        aggregate: {
-          args: Prisma.ConversationAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateConversation>
-        }
-        groupBy: {
-          args: Prisma.ConversationGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ConversationGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.ConversationCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ConversationCountAggregateOutputType> | number
-        }
-      }
-    }
     Reminder: {
       payload: Prisma.$ReminderPayload<ExtArgs>
       fields: Prisma.ReminderFieldRefs
@@ -717,77 +567,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Todo: {
-      payload: Prisma.$TodoPayload<ExtArgs>
-      fields: Prisma.TodoFieldRefs
+    Task: {
+      payload: Prisma.$TaskPayload<ExtArgs>
+      fields: Prisma.TaskFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.TodoFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload> | null
+          args: Prisma.TaskFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.TodoFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload>
+          args: Prisma.TaskFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload>
         }
         findFirst: {
-          args: Prisma.TodoFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload> | null
+          args: Prisma.TaskFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.TodoFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload>
+          args: Prisma.TaskFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload>
         }
         findMany: {
-          args: Prisma.TodoFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload>[]
+          args: Prisma.TaskFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload>[]
         }
         create: {
-          args: Prisma.TodoCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload>
+          args: Prisma.TaskCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload>
         }
         createMany: {
-          args: Prisma.TodoCreateManyArgs<ExtArgs>
+          args: Prisma.TaskCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.TodoCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload>[]
+          args: Prisma.TaskCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload>[]
         }
         delete: {
-          args: Prisma.TodoDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload>
+          args: Prisma.TaskDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload>
         }
         update: {
-          args: Prisma.TodoUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload>
+          args: Prisma.TaskUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload>
         }
         deleteMany: {
-          args: Prisma.TodoDeleteManyArgs<ExtArgs>
+          args: Prisma.TaskDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.TodoUpdateManyArgs<ExtArgs>
+          args: Prisma.TaskUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.TodoUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload>[]
+          args: Prisma.TaskUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload>[]
         }
         upsert: {
-          args: Prisma.TodoUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoPayload>
+          args: Prisma.TaskUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskPayload>
         }
         aggregate: {
-          args: Prisma.TodoAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateTodo>
+          args: Prisma.TaskAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTask>
         }
         groupBy: {
-          args: Prisma.TodoGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.TodoGroupByOutputType>[]
+          args: Prisma.TaskGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaskGroupByOutputType>[]
         }
         count: {
-          args: Prisma.TodoCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.TodoCountAggregateOutputType> | number
+          args: Prisma.TaskCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaskCountAggregateOutputType> | number
         }
       }
     }
@@ -848,37 +698,6 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-export const CaptureScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  kind: 'kind',
-  source: 'source',
-  conversation_id: 'conversation_id',
-  uri: 'uri',
-  mime_type: 'mime_type',
-  extracted_text: 'extracted_text',
-  metadata: 'metadata',
-  status: 'status',
-  error: 'error',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type CaptureScalarFieldEnum = (typeof CaptureScalarFieldEnum)[keyof typeof CaptureScalarFieldEnum]
-
-
-export const ConversationScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  title: 'title',
-  messages: 'messages',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
-
-
 export const ReminderScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
@@ -891,8 +710,6 @@ export const ReminderScalarFieldEnum = {
   completed_at: 'completed_at',
   cancelled_at: 'cancelled_at',
   source: 'source',
-  conversation_id: 'conversation_id',
-  capture_id: 'capture_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -900,7 +717,7 @@ export const ReminderScalarFieldEnum = {
 export type ReminderScalarFieldEnum = (typeof ReminderScalarFieldEnum)[keyof typeof ReminderScalarFieldEnum]
 
 
-export const TodoScalarFieldEnum = {
+export const TaskScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   title: 'title',
@@ -912,13 +729,11 @@ export const TodoScalarFieldEnum = {
   completed_at: 'completed_at',
   cancelled_at: 'cancelled_at',
   source: 'source',
-  conversation_id: 'conversation_id',
-  capture_id: 'capture_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
 
-export type TodoScalarFieldEnum = (typeof TodoScalarFieldEnum)[keyof typeof TodoScalarFieldEnum]
+export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -927,21 +742,6 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
-
-
-export const NullableJsonNullValueInput = {
-  DbNull: DbNull,
-  JsonNull: JsonNull
-} as const
-
-export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
-
-
-export const JsonNullValueInput = {
-  JsonNull: JsonNull
-} as const
-
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -958,15 +758,6 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
-export const JsonNullValueFilter = {
-  DbNull: DbNull,
-  JsonNull: JsonNull,
-  AnyNull: AnyNull
-} as const
-
-export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
 
@@ -1039,48 +830,6 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
- * Reference to a field of type 'CaptureKind'
- */
-export type EnumCaptureKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CaptureKind'>
-    
-
-
-/**
- * Reference to a field of type 'CaptureKind[]'
- */
-export type ListEnumCaptureKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CaptureKind[]'>
-    
-
-
-/**
- * Reference to a field of type 'Json'
- */
-export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
-
-
-/**
- * Reference to a field of type 'QueryMode'
- */
-export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
-
-
-/**
- * Reference to a field of type 'CaptureStatus'
- */
-export type EnumCaptureStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CaptureStatus'>
-    
-
-
-/**
- * Reference to a field of type 'CaptureStatus[]'
- */
-export type ListEnumCaptureStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CaptureStatus[]'>
-    
-
-
-/**
  * Reference to a field of type 'ReminderStatus'
  */
 export type EnumReminderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReminderStatus'>
@@ -1109,30 +858,30 @@ export type ListEnumActorSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$
 
 
 /**
- * Reference to a field of type 'TodoPriority'
+ * Reference to a field of type 'TaskPriority'
  */
-export type EnumTodoPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TodoPriority'>
+export type EnumTaskPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TaskPriority'>
     
 
 
 /**
- * Reference to a field of type 'TodoPriority[]'
+ * Reference to a field of type 'TaskPriority[]'
  */
-export type ListEnumTodoPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TodoPriority[]'>
+export type ListEnumTaskPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TaskPriority[]'>
     
 
 
 /**
- * Reference to a field of type 'TodoStatus'
+ * Reference to a field of type 'TaskStatus'
  */
-export type EnumTodoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TodoStatus'>
+export type EnumTaskStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TaskStatus'>
     
 
 
 /**
- * Reference to a field of type 'TodoStatus[]'
+ * Reference to a field of type 'TaskStatus[]'
  */
-export type ListEnumTodoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TodoStatus[]'>
+export type ListEnumTaskStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TaskStatus[]'>
     
 
 
@@ -1301,10 +1050,8 @@ export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions 
 export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
-  capture?: Prisma.CaptureOmit
-  conversation?: Prisma.ConversationOmit
   reminder?: Prisma.ReminderOmit
-  todo?: Prisma.TodoOmit
+  task?: Prisma.TaskOmit
 }
 
 /* Types for Logging */

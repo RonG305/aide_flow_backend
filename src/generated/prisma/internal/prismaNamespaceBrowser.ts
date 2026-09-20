@@ -52,10 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Capture: 'Capture',
-  Conversation: 'Conversation',
   Reminder: 'Reminder',
-  Todo: 'Todo'
+  Task: 'Task'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -92,37 +90,6 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-export const CaptureScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  kind: 'kind',
-  source: 'source',
-  conversation_id: 'conversation_id',
-  uri: 'uri',
-  mime_type: 'mime_type',
-  extracted_text: 'extracted_text',
-  metadata: 'metadata',
-  status: 'status',
-  error: 'error',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type CaptureScalarFieldEnum = (typeof CaptureScalarFieldEnum)[keyof typeof CaptureScalarFieldEnum]
-
-
-export const ConversationScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  title: 'title',
-  messages: 'messages',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
-
-
 export const ReminderScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
@@ -135,8 +102,6 @@ export const ReminderScalarFieldEnum = {
   completed_at: 'completed_at',
   cancelled_at: 'cancelled_at',
   source: 'source',
-  conversation_id: 'conversation_id',
-  capture_id: 'capture_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -144,7 +109,7 @@ export const ReminderScalarFieldEnum = {
 export type ReminderScalarFieldEnum = (typeof ReminderScalarFieldEnum)[keyof typeof ReminderScalarFieldEnum]
 
 
-export const TodoScalarFieldEnum = {
+export const TaskScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   title: 'title',
@@ -156,13 +121,11 @@ export const TodoScalarFieldEnum = {
   completed_at: 'completed_at',
   cancelled_at: 'cancelled_at',
   source: 'source',
-  conversation_id: 'conversation_id',
-  capture_id: 'capture_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
 
-export type TodoScalarFieldEnum = (typeof TodoScalarFieldEnum)[keyof typeof TodoScalarFieldEnum]
+export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -171,21 +134,6 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
-
-
-export const NullableJsonNullValueInput = {
-  DbNull: DbNull,
-  JsonNull: JsonNull
-} as const
-
-export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
-
-
-export const JsonNullValueInput = {
-  JsonNull: JsonNull
-} as const
-
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -202,13 +150,4 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
-export const JsonNullValueFilter = {
-  DbNull: DbNull,
-  JsonNull: JsonNull,
-  AnyNull: AnyNull
-} as const
-
-export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

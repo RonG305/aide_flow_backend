@@ -27,16 +27,16 @@ async function bootstrap() {
   app.setGlobalPrefix('api/v1');
 
   const config = new DocumentBuilder()
-    .setTitle('Aide flow Backend').setDescription('NestJS + Prisma backend for Aide, a self-hosted voice assistant — persists reminders and todos, and powers an on-device LLM agent that reads your schedule, sets reminders, and manages tasks')
+    .setTitle('Aide flow Backend').setDescription('NestJS + Prisma backend for Aide, a self-hosted voice assistant — persists reminders and tasks, and powers an on-device LLM agent that reads your schedule, sets reminders, and manages tasks')
     .setVersion('1.0').addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, 'jwt-auth').build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/v1', app, document);
+  SwaggerModule.setup('api/v1/docs', app, document);
   writeFileSync(join(process.cwd(), 'swagger-spec.json'), JSON.stringify(document, null, 2));
-  await app.listen(4006);
-  
-  console.log('AideFlow service: http://localhost:4000/api/v1');
-  console.log(
-    `Swagger is running on: ${await app.getUrl()}/api/v1`,
-  );
+  const port = process.env.PORT ?? 4006;
+  await app.listen(port);
+
+  const url = await app.getUrl();
+  console.log(`AideFlow service: ${url}/api/v1`);
+  console.log(`Swagger is running on: ${url}/api/v1/docs`);
 }
 bootstrap();

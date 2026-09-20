@@ -23,22 +23,12 @@ export * from './enums.js';
  */
 export type User = Prisma.UserModel
 /**
- * Model Capture
- * 
- */
-export type Capture = Prisma.CaptureModel
-/**
- * Model Conversation
- * 
- */
-export type Conversation = Prisma.ConversationModel
-/**
  * Model Reminder
  * 
  */
 export type Reminder = Prisma.ReminderModel
 /**
- * Model Todo
+ * Model Task
  * 
  */
-export type Todo = Prisma.TodoModel
+export type Task = Prisma.TaskModel

@@ -72,7 +72,10 @@ export class AuthService {
   }
 
   async signIn(email: string, password: string) {
-    const user = await this.prisma.user.findUnique({ where: { email } });
+    const user = await this.prisma.user.findUnique({
+      where: { email },
+      omit: { password: false },
+    });
     if (!user)
       throw new UnauthorizedException('Account Not found! Register to login');
     if (user.status !== 'active')
