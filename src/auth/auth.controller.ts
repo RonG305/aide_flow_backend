@@ -7,6 +7,7 @@ import {
   HttpCode,
   HttpStatus,
   Query,
+  Req,
   Patch,
   Param,
   Delete,
@@ -62,6 +63,20 @@ export class AuthController {
   @Delete('users/:id/delete')
   deleteUser(@Param('id') id: string) {
     return this.authService.deleteUser(id);
+  }
+
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Post('agent/token')
+  issueAgentToken(@Req() req) {
+    return this.authService.issueAgentToken(req.user.sub);
+  }
+
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Delete('agent/token')
+  revokeAgentToken(@Req() req) {
+    return this.authService.revokeAgentToken(req.user.sub);
   }
 
   @HttpCode(HttpStatus.OK)

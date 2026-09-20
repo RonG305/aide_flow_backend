@@ -23,7 +23,11 @@ export class RemindersService {
     return reminder;
   }
 
-  async createReminder(userId: string, createReminderDto: CreateReminderDto) {
+  async createReminder(
+    userId: string,
+    createReminderDto: CreateReminderDto,
+    isAgent = false,
+  ) {
     const { remind_at, ...rest } = createReminderDto;
 
     const reminder = await this.prisma.reminder.create({
@@ -31,7 +35,7 @@ export class RemindersService {
         ...rest,
         remind_at: new Date(remind_at),
         user_id: userId,
-        source: 'user',
+        source: isAgent ? 'agent' : 'user',
       },
     });
 
@@ -63,7 +67,6 @@ export class RemindersService {
       where,
       skip: Number((page - 1) * limit),
       take: Number(limit),
-      // Soonest first: what you are reminded of next matters most.
       orderBy: { remind_at: 'asc' },
     });
 
@@ -71,6 +74,22 @@ export class RemindersService {
       data: reminders,
       ...pagination,
     };
+  }
+
+
+  async getNextReminder(userId: string) {
+    const reminder = await this.prisma.reminder.findFirst({
+      where: {
+        user_id: userId,
+        status: ReminderStatus.pending,
+        remind_at: { gte: new Date() },
+      },
+      orderBy: { remind_at: 'asc' },
+    });
+
+    if (!reminder) return successResponse('No upcoming reminders', null);
+
+    return successResponse('Next reminder fetched succesifully', reminder);
   }
 
   async getReminderById(id: string, userId: string) {

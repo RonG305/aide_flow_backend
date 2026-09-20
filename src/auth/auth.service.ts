@@ -8,6 +8,7 @@ import { GetUsersDto } from './dto/get-users.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { randomUUID } from 'node:crypto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { paginate } from 'src/common/pagination/paginate';
 import Fuse from 'fuse.js';
@@ -95,6 +96,45 @@ export class AuthService {
       accessToken,
       user_id: user.id,
     };
+  }
+
+  /**
+   * Mints a long-lived token for the on-device agent, acting for this user.
+   * Each mint rotates the stored key, so an older agent token stops working.
+   */
+  async issueAgentToken(userId: string) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user) throw new NotFoundException('Account not found');
+
+    const agentKeyId = randomUUID();
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { agent_key_id: agentKeyId },
+    });
+
+    const agentToken = this.jwtService.sign(
+      {
+        sub: user.id,
+        email: user.email,
+        is_agent: true,
+        akid: agentKeyId,
+      },
+      { expiresIn: '365d' },
+    );
+
+    return successResponse('Agent token issued succesifully', {
+      agentToken,
+      user_id: user.id,
+    });
+  }
+
+  async revokeAgentToken(userId: string) {
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { agent_key_id: null },
+    });
+
+    return successResponse('Agent access revoked succesifully', null);
   }
 
   async getAllUsers({ search, limit, page }: GetUsersDto) {

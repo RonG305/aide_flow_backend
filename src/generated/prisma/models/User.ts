@@ -32,6 +32,7 @@ export type UserMinAggregateOutputType = {
   last_name: string | null
   gender: $Enums.Gender | null
   date_of_birth: string | null
+  agent_key_id: string | null
   timezone: string | null
   accept_terms_conditions: boolean | null
   status: $Enums.Status | null
@@ -47,6 +48,7 @@ export type UserMaxAggregateOutputType = {
   last_name: string | null
   gender: $Enums.Gender | null
   date_of_birth: string | null
+  agent_key_id: string | null
   timezone: string | null
   accept_terms_conditions: boolean | null
   status: $Enums.Status | null
@@ -62,6 +64,7 @@ export type UserCountAggregateOutputType = {
   last_name: number
   gender: number
   date_of_birth: number
+  agent_key_id: number
   timezone: number
   accept_terms_conditions: number
   status: number
@@ -79,6 +82,7 @@ export type UserMinAggregateInputType = {
   last_name?: true
   gender?: true
   date_of_birth?: true
+  agent_key_id?: true
   timezone?: true
   accept_terms_conditions?: true
   status?: true
@@ -94,6 +98,7 @@ export type UserMaxAggregateInputType = {
   last_name?: true
   gender?: true
   date_of_birth?: true
+  agent_key_id?: true
   timezone?: true
   accept_terms_conditions?: true
   status?: true
@@ -109,6 +114,7 @@ export type UserCountAggregateInputType = {
   last_name?: true
   gender?: true
   date_of_birth?: true
+  agent_key_id?: true
   timezone?: true
   accept_terms_conditions?: true
   status?: true
@@ -197,6 +203,7 @@ export type UserGroupByOutputType = {
   last_name: string | null
   gender: $Enums.Gender | null
   date_of_birth: string | null
+  agent_key_id: string | null
   timezone: string
   accept_terms_conditions: boolean
   status: $Enums.Status
@@ -233,6 +240,7 @@ export type UserWhereInput = {
   last_name?: Prisma.StringNullableFilter<"User"> | string | null
   gender?: Prisma.EnumGenderNullableFilter<"User"> | $Enums.Gender | null
   date_of_birth?: Prisma.StringNullableFilter<"User"> | string | null
+  agent_key_id?: Prisma.StringNullableFilter<"User"> | string | null
   timezone?: Prisma.StringFilter<"User"> | string
   accept_terms_conditions?: Prisma.BoolFilter<"User"> | boolean
   status?: Prisma.EnumStatusFilter<"User"> | $Enums.Status
@@ -250,6 +258,7 @@ export type UserOrderByWithRelationInput = {
   last_name?: Prisma.SortOrderInput | Prisma.SortOrder
   gender?: Prisma.SortOrderInput | Prisma.SortOrder
   date_of_birth?: Prisma.SortOrderInput | Prisma.SortOrder
+  agent_key_id?: Prisma.SortOrderInput | Prisma.SortOrder
   timezone?: Prisma.SortOrder
   accept_terms_conditions?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -270,6 +279,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   last_name?: Prisma.StringNullableFilter<"User"> | string | null
   gender?: Prisma.EnumGenderNullableFilter<"User"> | $Enums.Gender | null
   date_of_birth?: Prisma.StringNullableFilter<"User"> | string | null
+  agent_key_id?: Prisma.StringNullableFilter<"User"> | string | null
   timezone?: Prisma.StringFilter<"User"> | string
   accept_terms_conditions?: Prisma.BoolFilter<"User"> | boolean
   status?: Prisma.EnumStatusFilter<"User"> | $Enums.Status
@@ -287,6 +297,7 @@ export type UserOrderByWithAggregationInput = {
   last_name?: Prisma.SortOrderInput | Prisma.SortOrder
   gender?: Prisma.SortOrderInput | Prisma.SortOrder
   date_of_birth?: Prisma.SortOrderInput | Prisma.SortOrder
+  agent_key_id?: Prisma.SortOrderInput | Prisma.SortOrder
   timezone?: Prisma.SortOrder
   accept_terms_conditions?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -308,6 +319,7 @@ export type UserScalarWhereWithAggregatesInput = {
   last_name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   gender?: Prisma.EnumGenderNullableWithAggregatesFilter<"User"> | $Enums.Gender | null
   date_of_birth?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  agent_key_id?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   timezone?: Prisma.StringWithAggregatesFilter<"User"> | string
   accept_terms_conditions?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   status?: Prisma.EnumStatusWithAggregatesFilter<"User"> | $Enums.Status
@@ -323,6 +335,7 @@ export type UserCreateInput = {
   last_name?: string | null
   gender?: $Enums.Gender | null
   date_of_birth?: string | null
+  agent_key_id?: string | null
   timezone?: string
   accept_terms_conditions?: boolean
   status?: $Enums.Status
@@ -340,6 +353,7 @@ export type UserUncheckedCreateInput = {
   last_name?: string | null
   gender?: $Enums.Gender | null
   date_of_birth?: string | null
+  agent_key_id?: string | null
   timezone?: string
   accept_terms_conditions?: boolean
   status?: $Enums.Status
@@ -357,6 +371,7 @@ export type UserUpdateInput = {
   last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agent_key_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -374,6 +389,7 @@ export type UserUncheckedUpdateInput = {
   last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agent_key_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -391,6 +407,7 @@ export type UserCreateManyInput = {
   last_name?: string | null
   gender?: $Enums.Gender | null
   date_of_birth?: string | null
+  agent_key_id?: string | null
   timezone?: string
   accept_terms_conditions?: boolean
   status?: $Enums.Status
@@ -406,6 +423,7 @@ export type UserUpdateManyMutationInput = {
   last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agent_key_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -421,6 +439,7 @@ export type UserUncheckedUpdateManyInput = {
   last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agent_key_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -436,6 +455,7 @@ export type UserCountOrderByAggregateInput = {
   last_name?: Prisma.SortOrder
   gender?: Prisma.SortOrder
   date_of_birth?: Prisma.SortOrder
+  agent_key_id?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   accept_terms_conditions?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -451,6 +471,7 @@ export type UserMaxOrderByAggregateInput = {
   last_name?: Prisma.SortOrder
   gender?: Prisma.SortOrder
   date_of_birth?: Prisma.SortOrder
+  agent_key_id?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   accept_terms_conditions?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -466,6 +487,7 @@ export type UserMinOrderByAggregateInput = {
   last_name?: Prisma.SortOrder
   gender?: Prisma.SortOrder
   date_of_birth?: Prisma.SortOrder
+  agent_key_id?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   accept_terms_conditions?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -538,6 +560,7 @@ export type UserCreateWithoutRemindersInput = {
   last_name?: string | null
   gender?: $Enums.Gender | null
   date_of_birth?: string | null
+  agent_key_id?: string | null
   timezone?: string
   accept_terms_conditions?: boolean
   status?: $Enums.Status
@@ -554,6 +577,7 @@ export type UserUncheckedCreateWithoutRemindersInput = {
   last_name?: string | null
   gender?: $Enums.Gender | null
   date_of_birth?: string | null
+  agent_key_id?: string | null
   timezone?: string
   accept_terms_conditions?: boolean
   status?: $Enums.Status
@@ -586,6 +610,7 @@ export type UserUpdateWithoutRemindersInput = {
   last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agent_key_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -602,6 +627,7 @@ export type UserUncheckedUpdateWithoutRemindersInput = {
   last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agent_key_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -618,6 +644,7 @@ export type UserCreateWithoutTasksInput = {
   last_name?: string | null
   gender?: $Enums.Gender | null
   date_of_birth?: string | null
+  agent_key_id?: string | null
   timezone?: string
   accept_terms_conditions?: boolean
   status?: $Enums.Status
@@ -634,6 +661,7 @@ export type UserUncheckedCreateWithoutTasksInput = {
   last_name?: string | null
   gender?: $Enums.Gender | null
   date_of_birth?: string | null
+  agent_key_id?: string | null
   timezone?: string
   accept_terms_conditions?: boolean
   status?: $Enums.Status
@@ -666,6 +694,7 @@ export type UserUpdateWithoutTasksInput = {
   last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agent_key_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -682,6 +711,7 @@ export type UserUncheckedUpdateWithoutTasksInput = {
   last_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   date_of_birth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agent_key_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   accept_terms_conditions?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -738,6 +768,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   last_name?: boolean
   gender?: boolean
   date_of_birth?: boolean
+  agent_key_id?: boolean
   timezone?: boolean
   accept_terms_conditions?: boolean
   status?: boolean
@@ -756,6 +787,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   last_name?: boolean
   gender?: boolean
   date_of_birth?: boolean
+  agent_key_id?: boolean
   timezone?: boolean
   accept_terms_conditions?: boolean
   status?: boolean
@@ -771,6 +803,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   last_name?: boolean
   gender?: boolean
   date_of_birth?: boolean
+  agent_key_id?: boolean
   timezone?: boolean
   accept_terms_conditions?: boolean
   status?: boolean
@@ -786,6 +819,7 @@ export type UserSelectScalar = {
   last_name?: boolean
   gender?: boolean
   date_of_birth?: boolean
+  agent_key_id?: boolean
   timezone?: boolean
   accept_terms_conditions?: boolean
   status?: boolean
@@ -793,7 +827,7 @@ export type UserSelectScalar = {
   updated_at?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "first_name" | "last_name" | "gender" | "date_of_birth" | "timezone" | "accept_terms_conditions" | "status" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "first_name" | "last_name" | "gender" | "date_of_birth" | "agent_key_id" | "timezone" | "accept_terms_conditions" | "status" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   reminders?: boolean | Prisma.User$remindersArgs<ExtArgs>
   tasks?: boolean | Prisma.User$tasksArgs<ExtArgs>
@@ -816,6 +850,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     last_name: string | null
     gender: $Enums.Gender | null
     date_of_birth: string | null
+    agent_key_id: string | null
     timezone: string
     accept_terms_conditions: boolean
     status: $Enums.Status
@@ -1253,6 +1288,7 @@ export interface UserFieldRefs {
   readonly last_name: Prisma.FieldRef<"User", 'String'>
   readonly gender: Prisma.FieldRef<"User", 'Gender'>
   readonly date_of_birth: Prisma.FieldRef<"User", 'String'>
+  readonly agent_key_id: Prisma.FieldRef<"User", 'String'>
   readonly timezone: Prisma.FieldRef<"User", 'String'>
   readonly accept_terms_conditions: Prisma.FieldRef<"User", 'Boolean'>
   readonly status: Prisma.FieldRef<"User", 'Status'>

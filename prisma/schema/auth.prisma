@@ -20,6 +20,7 @@ model User {
   gender        Gender?
   date_of_birth String?
 
+  agent_key_id            String?
   timezone                String     @default("UTC")
   reminders               Reminder[]
   tasks                   Task[]

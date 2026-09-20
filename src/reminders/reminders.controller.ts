@@ -27,13 +27,24 @@ export class RemindersController {
 
   @Post()
   createReminder(@Body() createReminderDto: CreateReminderDto, @Req() req) {
-    return this.remindersService.createReminder(req.user.sub, createReminderDto);
+    return this.remindersService.createReminder(
+      req.user.sub,
+      createReminderDto,
+      req.user.is_agent,
+    );
   }
 
   @HttpCode(HttpStatus.OK)
   @Get()
   getAllReminders(@Query() getRemindersDto: GetRemindersDto, @Req() req) {
     return this.remindersService.getAllReminders(req.user.sub, getRemindersDto);
+  }
+
+  // Declared before ':id' so that "next" is not swallowed as an id.
+  @HttpCode(HttpStatus.OK)
+  @Get('next')
+  getNextReminder(@Req() req) {
+    return this.remindersService.getNextReminder(req.user.sub);
   }
 
   @HttpCode(HttpStatus.OK)

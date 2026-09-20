@@ -27,7 +27,11 @@ export class TasksController {
 
   @Post()
   createTask(@Body() createTaskDto: CreateTaskDto, @Req() req) {
-    return this.tasksService.createTask(req.user.sub, createTaskDto);
+    return this.tasksService.createTask(
+      req.user.sub,
+      createTaskDto,
+      req.user.is_agent,
+    );
   }
 
   @HttpCode(HttpStatus.OK)

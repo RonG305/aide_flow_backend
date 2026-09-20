@@ -19,7 +19,11 @@ export class TasksService {
     return task;
   }
 
-  async createTask(userId: string, createTaskDto: CreateTaskDto) {
+  async createTask(
+    userId: string,
+    createTaskDto: CreateTaskDto,
+    isAgent = false,
+  ) {
     const { due_date, ...rest } = createTaskDto;
 
     const task = await this.prisma.task.create({
@@ -27,7 +31,7 @@ export class TasksService {
         ...rest,
         due_date: due_date ? new Date(due_date) : undefined,
         user_id: userId,
-        source: 'user',
+        source: isAgent ? 'agent' : 'user',
       },
     });
 

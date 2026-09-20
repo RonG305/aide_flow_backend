@@ -688,6 +688,7 @@ export const UserScalarFieldEnum = {
   last_name: 'last_name',
   gender: 'gender',
   date_of_birth: 'date_of_birth',
+  agent_key_id: 'agent_key_id',
   timezone: 'timezone',
   accept_terms_conditions: 'accept_terms_conditions',
   status: 'status',
